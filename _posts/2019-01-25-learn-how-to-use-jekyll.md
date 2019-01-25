@@ -13,7 +13,8 @@ tag: 在线课程
 * content
 {:toc}
 
-
+### 最近收集的一些在线视频
+**还没有整理出观看顺序**
 
 + 1、B站 [线性代数的本质](https://www.bilibili.com/video/av6731067/)
 + 2、[网易云课堂斯坦福CS231n李飞飞计算机视觉](https://study.163.com/course/courseMain.htm?courseId=1003223001)或者[Stanford university cs231n,spring 2017]（https://www.youtube.com/watch?v=vT1JzLTH4G4&list=PLC1qU-LWwrF64f4QKQT-Vg5Wr4qEE1Zxk）
