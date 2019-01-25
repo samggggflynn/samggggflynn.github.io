@@ -1,11 +1,11 @@
-﻿# Site settings
+# Site settings
 title:LXC's site
-name: Less Or More
-email: abc401011721@gmail.com
-author: LXC
-url: http://www.samgggg.tk
+name:Less Or More
+email:abc401011721@gmail.com
+author:L_XC
+url:http://www.samgggg.tk
 
-github: https://github.com/samggggflynn/
+github:https://github.com/samggggflynn/
 baseurl: ""
 description: LXC's blog
 meta_description: L XC;个人博客;学而不思则罔;思而不学则殆;生命不止;折腾不休
