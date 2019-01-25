@@ -12,5 +12,5 @@ permalink: /resume/
 -----------------------------------------------------------------
 
 +  姓名：XC L
-[GitHub](samggggflynn.github.com)
+[GitHub](https://github.com/samggggflynn/)
 
