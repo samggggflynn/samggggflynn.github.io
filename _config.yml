@@ -1,14 +1,12 @@
 ﻿# Site settings
-title:LXC's site
-name: Less Or More
+name: Xc's Site
 email: abc401011721@gmail.com
-author: LXC
+author: Xc L
 url: http://www.samgggg.tk
-
 github: https://github.com/samggggflynn/
 baseurl: ""
-description: LXC's blog
-meta_description: L XC;个人博客;学而不思则罔;思而不学则殆;生命不止;折腾不休
+description: LC's blog! less is more!
+meta_description: XCL;个人博客;学而不思则罔;思而不学则殆
 motto: It's our wits that make us men.
 banner: 学而不思则罔，思而不学则殆。
 
