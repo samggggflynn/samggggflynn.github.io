@@ -15,7 +15,7 @@ tag: 笔记
 # python note(python笔记 python版本3.7)
 ## Basic data type（基本数据类型）
 ### 整型和浮点型 
-*（和其他语言同样）
+**（和其他语言同样）**
 ```python
 x = 3
 print(type(x)) # Prints "<class 'int'>"
@@ -23,7 +23,7 @@ print(x)       # Prints "3"
 print(x + 1)   # Addition; prints "4"
 print(x - 1)   # Subtraction; prints "2"
 print(x * 2)   # Multiplication; prints "6"
-print(x ** 2)  # Exponentiation;(幂运算) prints "9"
+print(x ** 2)  # Exponentiation;（幂运算） prints "9"
 x += 1
 print(x)  # Prints "4"
 x *= 2
@@ -36,7 +36,7 @@ print(y, y + 1, y * 2, y ** 2) # Prints "2.5 3.5 5.0 6.25"
 >python内嵌复数，同样可以操作复数（complex numbers）
 
 ### 布尔型 Booleans
->python能够实现布尔逻辑运算，但是使用单词`and`、`or`而不是符号`&&`、`||`;
+> **python能够实现布尔逻辑运算，但是使用单词`and`、`or`而不是符号`&&`、`||`;**
 
 ```python
 t = True
@@ -93,7 +93,7 @@ x = xs.pop()      # Remove and return the last element of the list（从list尾�
 print(x, xs)      # Prints "bar [3, 1, 'foo']"
 ```
 详细用法见[python开发文档 v3.7]（https://docs.python.org/3.7/tutorial/datastructures.html#more-on-lists）
-- List切片（Slicing）
+- **List切片（Slicing）**
 
 >除了一次访问一个列表元素之外，Python还提供了访问子列表的简明语法;这被称为切片
 
@@ -116,7 +116,7 @@ for animal in animals:
     print(animal)
 # Prints "cat", "dog", "monkey", each on its own line.
 ```
-- 如果要访问循环体内每个元素的索引，请使用内置枚举`enumerate`函数
+- **如果要访问循环体内每个元素的索引，请使用内置枚举`enumerate`函数**
 
 ```python
 animals = ['cat', 'dog', 'monkey']
