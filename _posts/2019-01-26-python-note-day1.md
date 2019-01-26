@@ -126,7 +126,7 @@ for idx, animal in enumerate(animals):
 ```
 - List 理解：编程时，我们经常想要将一种数据转换为另一种数据。举个简单的例子，考虑以下计算平方数的代码：
 
-```Python
+```python
 nums = [0, 1, 2, 3, 4]
 squares = []
 for x in nums:
