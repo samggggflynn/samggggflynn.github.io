@@ -51,6 +51,7 @@ print(t != f)  # Logical XOR; prints "True"
 ### 字符串 Strings
 
 - python对于字符串操作很方便
+
 ```python
 hello = 'hello'    # String literals can use single quotes
 world = "world"    # or double quotes; it does not matter.
@@ -62,6 +63,7 @@ hw12 = '%s %s %d' % (hello, world, 12)  # sprintf style string formatting
 print(hw12)  # prints "hello world 12"
 ```
 - String对象有很多有用的方法
+
 ```python
 s = "hello"
 print(s.capitalize())  # Capitalize a string;（使字符串首字母大写）prints "Hello"
@@ -78,6 +80,7 @@ print('  world '.strip())  # Strip leading and trailing whitespace;（去掉前�
 - Python包含几种内置的容器类型：列表，字典，集合，元组；
 ### List（列表）
 - 列表：是Python中的数组，但是可以调整大小和包含不同类型的元素
+
 ```python
 xs = [3, 1, 2]    # Create a list(创建list)
 print(xs, xs[2])  # Prints "[3, 1, 2] 2"（list中包含list）
@@ -91,6 +94,7 @@ print(x, xs)      # Prints "bar [3, 1, 'foo']"
 ```
 详细用法见[python开发文档 v3.7]（https://docs.python.org/3.7/tutorial/datastructures.html#more-on-lists）
 - List切片（Slicing）
+
 >除了一次访问一个列表元素之外，Python还提供了访问子列表的简明语法;这被称为切片
 
 ```python
@@ -105,6 +109,7 @@ nums[2:4] = [8, 9]        # Assign a new sublist to a slice（将新的子列表
 print(nums)               # Prints "[0, 1, 8, 9, 4]"
 ```
 - Loop 可以循环遍历数组中的元素
+
 ```python
 animals = ['cat', 'dog', 'monkey']
 for animal in animals:
@@ -112,6 +117,7 @@ for animal in animals:
 # Prints "cat", "dog", "monkey", each on its own line.
 ```
 - 如果要访问循环体内每个元素的索引，请使用内置枚举`enumerate`函数
+
 ```python
 animals = ['cat', 'dog', 'monkey']
 for idx, animal in enumerate(animals):
@@ -119,7 +125,9 @@ for idx, animal in enumerate(animals):
 # Prints "#1: cat", "#2: dog", "#3: monkey", each on its own line
 ```
 - List 理解：编程时，我们经常想要将一种数据转换为另一种数据。举个简单的例子，考虑以下计算平方数的代码：
-```nums = [0, 1, 2, 3, 4]
+
+```Python
+nums = [0, 1, 2, 3, 4]
 squares = []
 for x in nums:
     squares.append(x ** 2)
