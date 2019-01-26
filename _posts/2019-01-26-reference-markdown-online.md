@@ -1,7 +1,7 @@
 ---
 layout: post
 #标题配置
-title: Python 快速排序
+title: Markdown 编辑器推荐
 #时间配置
 date:   2019-01-26 22:41:00 +0800
 #大类配置
