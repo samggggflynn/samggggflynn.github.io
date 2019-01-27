@@ -74,7 +74,7 @@ print(s.replace('l', '(ell)'))  # Replace all instances of one substring with an
                                 # prints "he(ell)(ell)o"
 print('  world '.strip())  # Strip leading and trailing whitespace;（去掉前后的空格）prints "world"
 ```
-详细用法见[python开发文档 v3.7]（https://docs.python.org/3.7/library/stdtypes.html#string-methods）
+详细用法见[python开发文档 v3.7](https://docs.python.org/3.7/library/stdtypes.html#string-methods)
 
 ## Containers（容器）
 - Python包含几种内置的容器类型：列表，字典，集合，元组；
@@ -92,7 +92,7 @@ print(xs)         # Prints "[3, 1, 'foo', 'bar']"
 x = xs.pop()      # Remove and return the last element of the list（从list尾移除一个元素 修改list）
 print(x, xs)      # Prints "bar [3, 1, 'foo']"
 ```
-详细用法见[python开发文档 v3.7]（https://docs.python.org/3.7/tutorial/datastructures.html#more-on-lists）
+详细用法见[python开发文档 v3.7](https://docs.python.org/3.7/tutorial/datastructures.html#more-on-lists)
 - **List切片（Slicing）**
 
 >除了一次访问一个列表元素之外，Python还提供了访问子列表的简明语法;这被称为切片
