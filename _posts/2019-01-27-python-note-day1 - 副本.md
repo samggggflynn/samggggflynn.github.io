@@ -147,7 +147,7 @@ nums = [0, 1, 2, 3, 4]
 even_squares = [x ** 2 for x in nums if x % 2 == 0]
 print(even_squares)  # Prints "[0, 4, 16]"
 ```
-======================================
+
 ### Dictionaries（字典）
 
 > 字典（dictionary）存储`(key,value)` “键-值对”，这个Java中的`Map`相似；可以这样使用：
@@ -233,7 +233,7 @@ print(d[t])       # Prints "5"
 print(d[(1, 2)])  # Prints "1"
 ```
 Tuples元组详细用法见[python开发文档-Tuples v3.7](https://docs.python.org/3.7/tutorial/datastructures.html#tuples-and-sequences)
-=========================================
+
 ## Function（函数）
 > Python中使用关键字`def`来定义函数，例如：
 
@@ -263,7 +263,7 @@ hello('Bob') # Prints "Hello, Bob"
 hello('Fred', loud=True)  # Prints "HELLO, FRED!"
 ```
 Functions函数详细用法见[python开发文档-Functions v3.7](https://docs.python.org/3.7/tutorial/controlflow.html#defining-functions)
-========================================
+
 ## Classes（类）
 > 在Python中定义类的语法很简单
 
