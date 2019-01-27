@@ -152,7 +152,7 @@ print(even_squares)  # Prints "[0, 4, 16]"
 
 > 字典（dictionary）存储`(key,value)` “键-值对”，这个Java中的`Map`相似；可以这样使用：
 
-```Python
+```python
 d = {'cat': 'cute', 'dog': 'furry'}  # （创建一个字典）Create a new dictionary with some data
 print(d['cat'])       # Get an entry from a dictionary（从字典中获取一个条目）; prints "cute"
 print('cat' in d)     # Check if a dictionary has a given key（检查字典中是否包含给定的值）; prints "True"
@@ -166,6 +166,7 @@ print(d.get('fish', 'N/A')) # "fish" is no longer a key; prints "N/A"
 ```
 dictionary详细用法见[python开发文档-dict v3.7](https://docs.python.org/3.7/library/stdtypes.html#dict)
 * 在字典中用“键”迭代（iterate over）很容易
+
 ```python
 d = {'person': 2, 'cat': 4, 'spider': 8}	#定义一个字典
 for animal in d:
@@ -173,7 +174,8 @@ for animal in d:
     print('A %s has %d legs' % (animal, legs))
 # Prints "A person has 2 legs", "A cat has 4 legs", "A spider has 8 legs"（依次对元素迭代按照格式输出）
 ```
-** 如果要访问键及其对应的值，请使用`items`方法：**👇
+**如果要访问键及其对应的值，请使用`items`方法：**👇
+
 ```python
 d = {'person': 2, 'cat': 4, 'spider': 8}
 for animal, legs in d.items():
@@ -181,14 +183,16 @@ for animal, legs in d.items():
 # Prints "A person has 2 legs", "A cat has 4 legs", "A spider has 8 legs"
 ```
 * 字典推导（Dictionary comprehensions）：和List comprehensions相似，但允许更容易的构造词典，如：
+
 ```python
 nums = [0, 1, 2, 3, 4]
 even_num_to_square = {x: x ** 2 for x in nums if x % 2 == 0}
 print(even_num_to_square)  # Prints "{0: 0, 2: 4, 4: 16}"(输出平方)
 ```
-=======================================
+
 ### Sets（集合）
 - 集合（Sets）是不同元素的**无序**集合。使用`{}`标识，简单例子如下：
+
 ```python
 animals = {'cat', 'dog'}  #新建一个集合
 print('cat' in animals)   # Check if an element is in a set;（检查集合中是否存在给定的元素）prints "True"
@@ -203,6 +207,7 @@ print(len(animals))       # Prints "2"
 ```
 sets详细用法见[python开发文档-Sets v3.7](https://docs.python.org/3.7/library/stdtypes.html#set)
 - 循环Loops：迭代集合（Sets）与迭代列表（Lists）具有相同的语法;但是由于集合是无序的，因此无法对访问集合元素的顺序进行假设：
+
 ```python
 animals = {'cat', 'dog', 'fish'}			#新建一个字典
 for idx, animal in enumerate(animals):		#使用枚举方法
@@ -215,7 +220,7 @@ from math import sqrt		#导入平方根方法sqrt()
 nums = {int(sqrt(x)) for x in range(30)}
 print(nums)  # Prints "{0, 1, 2, 3, 4, 5}"
 ```
-========================================
+
 ### Tuple（元组）
 > 元组是一组**不可变**,有序值的列表。元组在很多方法都和列表（Lists）相似，最大的区别在于：元组能够被用于字典（dictionary）的值（key）和集合（Sets）的元素；而列表list不能。
 > 下面是一个简单的例子
