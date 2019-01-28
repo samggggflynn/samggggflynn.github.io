@@ -191,7 +191,7 @@ print(even_num_to_square)  # Prints "{0: 0, 2: 4, 4: 16}"(输出平方)
 ```
 
 ### Sets（集合）
-- 集合（Sets）是不同元素的**无序**集合。使用`{}`标识，简单例子如下：
+- 集合（Sets）是**不同元素**的**无序**集合。使用`{}`标识，简单例子如下：
 
 ```python
 animals = {'cat', 'dog'}  #新建一个集合
@@ -205,11 +205,23 @@ print(len(animals))       # Prints "3"（即不能添加重复的元素）
 animals.remove('cat')     # Remove an element from a set（移除一个指定元素）
 print(len(animals))       # Prints "2"
 ```
+- 集合的一些操作
+
+```python
+a = {1,2,3,4}
+b = {2,3,4,5}
+print(a.union(b))        #print {1,2,3,4,5};print(b.union(a))效果相同，同理print(a|b)也是同样效果
+print(a.intersection(b)) #print {2,3,4}; 同理b.intersection(a)或者a&by也是
+print(a.difference(b))   #print {1}; 相当于a-b ；elements in a{} but not in b{};
+print(b.difference(a))   #print {5}; 相当于b-a ；elements in b{} but not in a{};
+#a.issubset(b) 或者 a<=b   判断a是不是b的子集
+#
+```
 sets详细用法见[python开发文档-Sets v3.7](https://docs.python.org/3.7/library/stdtypes.html#set)
 - 循环Loops：迭代集合（Sets）与迭代列表（Lists）具有相同的语法;但是由于集合是无序的，因此无法对访问集合元素的顺序进行假设：
 
 ```python
-animals = {'cat', 'dog', 'fish'}			#新建一个字典
+animals = {'cat', 'dog', 'fish'}		#新建一个集合
 for idx, animal in enumerate(animals):		#使用枚举方法
     print('#%d: %s' % (idx + 1, animal))	#进行迭代输出
 # Prints "#1: fish", "#2: dog", "#3: cat"
@@ -222,7 +234,7 @@ print(nums)  # Prints "{0, 1, 2, 3, 4, 5}"
 ```
 
 ### Tuple（元组）
-> 元组是一组**不可变**,有序值的列表。元组在很多方法都和列表（Lists）相似，最大的区别在于：元组能够被用于字典（dictionary）的值（key）和集合（Sets）的元素；而列表list不能。
+> 元组是一组**不可变**,**有序**值的列表。元组在很多方法都和列表（Lists）相似，最大的区别在于：元组能够被用于字典（dictionary）的值（key）和集合（Sets）的元素；而列表list不能。
 > 下面是一个简单的例子
 
 ```python
@@ -233,6 +245,66 @@ print(d[t])       # Prints "5"
 print(d[(1, 2)])  # Prints "1"
 ```
 Tuples元组详细用法见[python开发文档-Tuples v3.7](https://docs.python.org/3.7/tutorial/datastructures.html#tuples-and-sequences)
+## 赋值机制
+
+```python
+a = 10000
+b = a
+id(a) is id(b)     #print 'True'
+
+b = 89898
+id(a) is id(b)     #print 'False'
+
+b = 10000
+id(a) is id(b)     #print 'False'（较大的数对应不同的内存位置）
+
+a = 1
+b = 1
+id(a) is id(b)     #print 'True'（为了提高内存的效率，较小的数不会在内存中重复创建）
+```
+## 判断结构
+> 通过**缩进**控制判断结构
+
+```python
+a = 100
+if a > 100:
+	print('100')   #这里是一个if判断的结构
+	
+elif a < 50:
+	print('50')
+
+else:
+	print('others')
+
+lists = [123,456,789]
+if 123 in lists:
+	print('ok')     #Lists中的判断结构
+
+dicts = {'num1':123,'num2':456}
+if 'num1' in dicts:
+	print('ok')     #Dictionaries中的判断结构
+```
+## 循环结构
+
+```python
+a = 0
+while a<=10:
+	print(a)
+	a += 1
+
+a = set(['s','a','m'])
+while a:    #只要集合set中还有值，就可以一直执行while
+	b = a.pop()
+	print(b)  #无序输出's','a','m' 效果同for name in a: print(name)
+```
+> 一般的遍历循环
+
+```python
+a = [212,432,543,312,12342,543412,3241]
+for i in range(len(a)):
+	print(a[i])
+# 遍历list并输出
+```
 
 ## Function（函数）
 > Python中使用关键字`def`来定义函数，例如：
@@ -261,8 +333,15 @@ def hello(name, loud=False):		#定义一个参数个数可变的函数hello()给
 
 hello('Bob') # Prints "Hello, Bob"
 hello('Fred', loud=True)  # Prints "HELLO, FRED!"
+
+def add_numbers(a,*args):
+	for i in args: 
+		a += i
+	return a
+add_numbers(3,43,23,1)    #Prints result of (3+43+23+1)（输出多个参数的和）
 ```
 Functions函数详细用法见[python开发文档-Functions v3.7](https://docs.python.org/3.7/tutorial/controlflow.html#defining-functions)
+
 
 ## Classes（类）
 > 在Python中定义类的语法很简单
