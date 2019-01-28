@@ -3,7 +3,7 @@ layout: post
 #标题配置
 title: Python-Numpy笔记
 #时间配置
-date:   2019-01-27 22:43:00 +0800
+date:   2019-01-28 22:43:00 +0800
 #大类配置
 categories: python-numpy
 #小类配置
