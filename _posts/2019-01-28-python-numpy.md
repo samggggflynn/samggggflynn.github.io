@@ -35,6 +35,7 @@ print(b.shape)                     # Prints "(2, 3)"（数组的行数、列数�
 print(b[0, 0], b[0, 1], b[1, 0])   # Prints "1 2 4"（访问输出数组指定行列位置的元素值）
 ```
 - Numpy还提供了很多其他创建数组的方法：
+
 ```python
 import numpy as np   #导入numpy包
 
@@ -57,6 +58,7 @@ e = np.random.random((2,2)) # Create an array filled with random values（创建
 print e                     # Might print "[[ 0.91940167  0.08143941]
                             #               [ 0.68744134  0.87236687]]"
 ```
+
 其他创建数组的方法见：[创建数组]（https://docs.scipy.org/doc/numpy/user/basics.creation.html#arrays-creation）
 
 ### Array indexing（数组索引）
