@@ -66,6 +66,7 @@ print e                     # Might print "[[ 0.91940167  0.08143941]
 
 - 切片（Slicing）：和lists相似，numpy数组也可以切片。
 - 由于数组可能是多维的，因此必须为数组的每个维指定一个切片。
+
 ```python
 import numpy as np #导入numpy包
 
