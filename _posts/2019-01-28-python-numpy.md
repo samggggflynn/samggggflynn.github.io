@@ -235,7 +235,7 @@ print(a[bool_idx])  # Prints "[3 4 5 6]"
 # 还可以将上面的所有操作整合到一个简介的声明中
 print(a[a > 2])     # Prints "[3 4 5 6]"
 ```
-其他数组索引的方法见：[Numpy数组索引]（https://docs.scipy.org/doc/numpy/reference/arrays.indexing.html）
+其他数组索引的方法见：[Numpy数组索引](https://docs.scipy.org/doc/numpy/reference/arrays.indexing.html)
 
 ## 数据类型（Datatypes）
 每个Numpy数组都是由类型相同的元素组成的网格。
