@@ -411,8 +411,8 @@ finally：
 	print('finally')  # 先输出异常 ====0 ，再输出 finally 
 ```
 
-# Python文件操作
-不同于numpy中，此处环境为jupter note
+## Python文件操作
+python中文件操纵不同于numpy中，此处环境为jupter note
 - 新建文件
 
 ```python
