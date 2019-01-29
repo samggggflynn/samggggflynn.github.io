@@ -342,7 +342,131 @@ add_numbers(3,43,23,1)    #Prints result of (3+43+23+1)（输出多个参数的�
 ```
 Functions函数详细用法见[python开发文档-Functions v3.7](https://docs.python.org/3.7/tutorial/controlflow.html#defining-functions)
 
+## 异常（Exceptions）
 
+```python
+import math
+
+for i in range(10):
+	try:      # 尝试
+		input_number = input('write a number:')
+		if input_number == 'q'
+			break
+		result = math.log(float(input_number))  # 若该处出现异常直接跳转到异常except处
+		print(result)
+	except ValueError:   # 如果发现异常，打印异常(ValueError是异常类型)，然后重复执行try的内容
+		print(‘ValueError: input must > 0’)  # log()函数的输入必须大于零
+		# break （可以通过break结束异常）
+```
+另一种异常
+```python
+import math
+for i in range(10):
+	try:      # 尝试
+		input_number = input('write a number:')
+		if input_number == 'q'
+			break
+		result = 1/math.log(float(input_number))  #分母不能为零，为零则异常
+		print(result)
+	except ValueError:   # 如果发现异常，打印异常(ValueError是异常类型)，然后重复执行try的内容
+		print('ValueError: input must > 0')  # log()函数的输入必须大于零
+		# break （可以通过break结束异常）
+		
+	except ZeroDivisionError:   # 如果发现异常，打印异常(ZeroDivisionError是异常类型)，然后重复执行try的内容
+		print('log(value) must != 0')     # 1/log() 分母必须大于零
+		# break （可以通过break结束异常）
+		except Exception:   # 如果发现异常，打印异常(Exception是‘ 通用 ’异常类型，所有类型的异常都可以处理抛出)，然后重复执行try的内容
+		print('unknown error')  # 打印输出错误的内容
+		# break （可以通过break结束异常）
+```
+自定义的异常👇
+```python
+class MyError(ValueError):
+	pass
+cur_list['s','a','m']
+while True:
+	cur_input = input()
+	if cur_input not in cur_list:
+		raise MyError('Invalid input:%s' %cur_input)
+	# 当输入非's''a''m'时，例如输入’‘sam’‘时，打印错误信息 MyError:Invalid input: sam?
+```
+finally的用法：无论有没有异常finally都会执行：
+```python
+try:
+	print('hello')
+finally:
+	print('finally')    # 输出hello
+	                    #     finally
+
+try:
+	1/0             # 先遇到异常
+finally：
+	print('finally')  # 先输出 finally ，在打印异常信息 ZeroDivisionError
+
+try:
+	1/0             # 先遇到异常
+expect：            # 有异常expect，输出异常，再输出finally
+	print('====0')
+finally：
+	print('finally')  # 先输出异常 ====0 ，再输出 finally 
+```
+
+# Python文件操作
+不同于numpy中，此处环境为jupter note
+- 新建文件
+
+```python
+%%writefile samgggg.py
+# 将下面内容写入到新建文件’samgggg.py‘文件中并保存（也可以保存成txt等文件）
+name = input('input your id:')
+print(name)
+```
+- 读文件
+
+```python
+sam = open('./samgggg.py')  # 注意路径可以是当前路径’./‘，或者完整路径
+sam_read = sam.read()
+print(sam_read)
+# 打印输出name = input('input your id:')
+#        print(name)
+```
+- 逐行读文件
+
+```python
+lines = sam.readlines()
+print(type(lines))   # 输出lines类型为 class list 列表
+print(lines)         # 输出['name = input('input your id:')\n','print(name)']
+for line in lines:
+	print('cur_line:'line) # 输出：cur_line:name = input('input your id:')
+                             #    cur_line:print(name)
+sam.close()                # 读完文件要关闭，这样完成一个完整的读文件操作
+```
+- 写文件
+
+```python
+txt = open('new_file.txt','w')  # 'w'模式，新写的会覆盖原始的内容；'a'模式会追加；'r'模式读
+txt.write('jin tian tian qi bu cuo')
+txt.write('\n')    # 记得加换行
+txt.write('samgggg')
+txt.close()        # close完成整个操作
+```
+- 其他文件操作
+
+```python
+with open('new_file.txt','w') as f:
+	f.write('jin tian tian qi bu cuo')  # 操作会自动close（省事，不会忘记close，最多的用法）
+
+# 相当于如下操作
+txt = open('new_file.txt','w')
+try:
+	for i in range(50):
+		10/(i-50)
+		txt.write(str(i)+'\n')
+except Exception:
+	print('error:',i)
+finally:
+	close()                             # 在finally中加close
+```
 ## Classes（类）
 > 在Python中定义类的语法很简单
 
