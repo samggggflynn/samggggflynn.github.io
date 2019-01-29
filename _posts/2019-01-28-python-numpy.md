@@ -61,7 +61,7 @@ print e                     # Might print "[[ 0.91940167  0.08143941]
 
 其他创建数组的方法见：[创建数组]（https://docs.scipy.org/doc/numpy/user/basics.creation.html#arrays-creation）
 
-### Array indexing（数组索引）
+## Array indexing（数组索引）
 > Numpy提供了多种索引数组的方法
 
 - 切片（Slicing）：和lists相似，numpy数组也可以切片。
@@ -175,4 +175,68 @@ arr[[4,2,1,7]]
 # 倒序整数索引
 arr[[-4,-2,-1,-7]] #同上输出
 ```
+整数数组索引的一个有用技巧是从 矩阵的每一行中选择或改变一个元素
+```python
+# 导入numpy包
+import numpy as np
+
+# Create a new array from which we will select elements
+#创建一个新数组，从中选择元素
+a = np.array([[1,2,3], [4,5,6], [7,8,9], [10, 11, 12]])
+
+print(a)  # prints "array([[ 1,  2,  3],
+          #                [ 4,  5,  6],
+          #                [ 7,  8,  9],
+          #                [10, 11, 12]])"
+
+# Create an array of indices
+# 创建一个索引数组👇
+b = np.array([0, 2, 0, 1])
+
+# Select one element from each row of a using the indices in b
+# 使用b中的索引从a的每一行中选择一个元素：👇
+print(a[np.arange(4), b])  # Prints "[ 1  6  7 11]"
+
+# Mutate one element from each row of a using the indices in b
+# 使用b中的索引来变换a的每一行中的一个元素：👇
+a[np.arange(4), b] += 10
+
+print(a)  # prints "array([[11,  2,  3],
+          #                [ 4,  5, 16],
+          #                [17,  8,  9],
+          #                [10, 21, 12]])
+```
+**布尔数组索引：**布尔数组索引允许您选择数组中的任意元素。
+通常，这种类型的索引（布尔型数组索引）用于选择满足某些条件的数组元素。这是一个例子：
+```python
+# 导入numpy包
+import numpy as np
+
+# 新建一个数组a
+a = np.array([[1,2], [3, 4], [5, 6]])
+
+bool_idx = (a > 2)   # Find the elements of a that are bigger than 2;
+					 # 找出数组 a 中大于 2 的元素；操作会返回一个和数组 a 一样视图的数组，每个位置对应 a 中元素是否大于 2 的布尔值
+                     # this returns a numpy array of Booleans of the same
+                     # shape as a, where each slot of bool_idx tells
+                     # whether that element of a is > 2.
+
+print(bool_idx)      # Prints "[[False False]
+                     #          [ True  True]
+                     #          [ True  True]]"
+
+# We use boolean array indexing to construct a rank 1 array
+# consisting of the elements of a corresponding to the True values
+# of bool_idx
+# 我们用布尔型数组索引创建一个一阶数组，新数组由bool_idx数组中的对应True值的元素
+print(a[bool_idx])  # Prints "[3 4 5 6]"
+
+# We can do all of the above in a single concise statement:
+# 还可以将上面的所有操作整合到一个简介的声明中
+print(a[a > 2])     # Prints "[3 4 5 6]"
+```
+其他数组索引的方法见：[Numpy数组索引]（https://docs.scipy.org/doc/numpy/reference/arrays.indexing.html）
+
+## 数据类型（Datatypes）
+每个Numpy数组都是由类型相同的元素组成的网格。
 ……未完待续
