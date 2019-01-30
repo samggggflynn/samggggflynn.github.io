@@ -473,7 +473,7 @@ finally:
 ```python
 class Greeter(object):
 
-    # Constructor（构造函数）
+    # Constructor（构造函数）初始化的方法，当创建一个类的时候，首先会调用它
     def __init__(self, name):
         self.name = name  # Create an instance variable（创建实例变量）
 
@@ -488,4 +488,112 @@ g = Greeter('Fred')  # Construct an instance of the Greeter class（构造Greete
 g.greet()            # Call an instance method; prints "Hello, Fred"（调用实例方法）
 g.greet(loud=True)   # Call an instance method; prints "HELLO, FRED!"（调用实例方法）
 ```
+```python
+class people:
+	'帮助信息：xxxxx'
+	# 所有实例都会共享
+	number = 100
+	# 构造函数，初始化的方法，当创建一个类的时候，首先会调用它
+	def __init__(self,name,age):
+		self.name = name
+		self.age = age
+	def display(self):
+		print('number = ',people.number)
+	def display_name(self):
+		print(self.name)
+
+p1 = people('sam',18)
+p2 = people('python','40')
+
+p1.name      # 将会打印  'sam'
+p1.display() # 将会打印  'number = :100'
+p2.display() # 将会打印  'number = :100'
+
+p2.name = 'hello'
+p2.name      # 将会打印  'hello'
+
+del p2.name  # 删除p2.name
+
+hasattr(p2,'name')#用hasattr判断p2中是否存在 name，将会输出 False
+
+getattr(p1,'name')#将会输出 'sam'
+
+setattr(p1,'name','gggg')
+getattr(p1,'name') # 将会输出 'gggg'
+
+delattr(p1,'name') # 删除属性
+
+```
+> print(people.__doc__)  # 将会打印'帮助信息：xxxxx'
+> print(people.__name__)  # 将会打印'people'
+> print(people.__module__)  # 将会打印'__main__'
+> print(people.__bases__)  # 将会打印'(<class 'object'>)'
+> print(people.__dict__)  # 将会打印''__module__','__main__','__doc__''
+
+**类的继承** 、**方法的重写**
+```python
+class Parent:# 定义父类
+	number = 100
+	def __init__(self):
+		print('调用父类构造函数')
+	def parentMethod():
+		print('调用父类方法')
+	def setAttr(self,attr):  #设置一个属性值，用于验证子类能否继承父类的属性（能）
+		Parent.parentAttr = attr
+	def getAttr(self):
+		print('父类的属性:',Parent.parentAttr)
+	def newMethod(self):
+		print('父类要被重写的方法')   # 可以在子类中重写父类中的方法
+
+class child(Parent): # 定义子类继承父类Parent
+	def __init__(self):
+		print('调用子类构造函数')
+	def childMethod():
+		print('调用子类方法')
+	# 在子类中定义与父类 同名 的方法会重写父类方法
+	def newMethod(self):
+		print('子类重写了父类方法')
+
+c = child()      # 实例化子类，会调用子类构造函数
+c.childMethod()  # 调用子类方法
+c.parentMethod() # 调用父类方法
+c.setAttr(1000)  # 设置属性值
+c.getAttr()      # 检查能够get到上一步设置的属性
+c.newMethod()    # 子类将会重写父类方法
+# 输出 ： 调用子类构造函数
+#		 调用子类方法
+#		 调用父类方法
+#		 父类的属性：1000
+#        子类重写了父类方法
+```
 Classes ’类‘详细用法见[python开发文档-Functions v3.7](https://docs.python.org/3.7/tutorial/classes.html)
+
+## 时间操作
+```python
+# 导入time
+import time
+
+print(time.time()) # 时间戳，距离1970年过去的时间
+
+print(time.localtime(time.time())) #打印当前时间
+#  输出：time.struct_time(tm_year=2019, tm_mon=1, tm_mday=30, tm_hour=23, tm_min=49, tm_sec=24, tm_wday=2, tm_yday=30, tm_isdst=0)
+
+print(time.asctime(time.localtime(time.time()))) # 时间格式化
+# 输出：Wed Jan 30 23:51:53 2019
+
+print(time.strftime('%Y-%m-%d %H:%M:%S',time.localtime()))
+# 格式化输出：2019-01-30 23:54:32
+```
+- 日历
+
+```python
+import calendar
+print(calendar.month(2019,1)) # 输出日历
+#    输出：    January 2019
+#		Mo Tu We Th Fr Sa Su
+#		    1  2  3  4  5  6
+#		 7  8  9 10 11 12 13
+#		14 15 16 17 18 19 20
+#		21 22 23 24 25 26 27
+#		28 29 30 31
+```
