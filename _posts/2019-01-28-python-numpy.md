@@ -238,5 +238,23 @@ print(a[a > 2])     # Prints "[3 4 5 6]"
 其他数组索引的方法见：[Numpy数组索引](https://docs.scipy.org/doc/numpy/reference/arrays.indexing.html)
 
 ## 数据类型（Datatypes）
-每个Numpy数组都是由类型相同的元素组成的网格。
+每个Numpy数组都是由类型相同的元素组成的网格。Numpy提供了一组可用于构造数组的大量数值数据类型。Numpy尝试在创建数组时猜测数据类型，但构造数组的函数通常还包含一个可选参数来显式指定数据类型。下面是个例子：
+```python
+# 导入numpy包
+import numpy as np
+
+x = np.array([1, 2])   # Let numpy choose the datatype（让numpy自己选择数据类型）
+print(x.dtype)         # Prints "int64"
+
+x = np.array([1.0, 2.0])   # Let numpy choose the datatype（让numpy自己选择数据类型）
+print(x.dtype)             # Prints "float64"
+
+x = np.array([1, 2], dtype=np.int64)   # Force a particular datatype（强制使用特定的数据类型）
+print(x.dtype)                         # Prints "int64"
+
+```
+更多numpy数据类型的方法见：[Numpy数据类型](https://docs.scipy.org/doc/numpy/reference/arrays.dtypes.html)
+## 数组计算
+
+
 ……未完待续
