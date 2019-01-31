@@ -256,5 +256,230 @@ print(x.dtype)                         # Prints "int64"
 更多numpy数据类型的方法见：[Numpy数据类型](https://docs.scipy.org/doc/numpy/reference/arrays.dtypes.html)
 ## 数组计算
 
+基本数学计算函数会对数组中元素逐个进行计算，既可以利用操作符重载，也可以使用numpy模块中的函数方式：
+```python
+import numpy as np
+# 新建数组并指定数据类型
+x = np.array([[1,2],[3,4]], dtype=np.float64)
+y = np.array([[5,6],[7,8]], dtype=np.float64)
 
-……未完待续
+# Elementwise sum; both produce the array
+# 元素和;两者都产生阵列；两者都会输出如下结果
+# [[ 6.0  8.0]
+#  [10.0 12.0]]
+print x + y
+print np.add(x, y)
+
+# Elementwise difference; both produce the array
+# 元素差;两者都产生阵列 两者都会输出如下结果
+# [[-4.0 -4.0]
+#  [-4.0 -4.0]]
+print x - y
+print np.subtract(x, y)
+
+# Elementwise product; both produce the array
+# 元素的积；两者都产生阵列 两者都会输出如下结果
+# [[ 5.0 12.0]
+#  [21.0 32.0]]
+print(x * y)
+print(np.multiply(x, y))
+
+# Elementwise division; both produce the array
+# 元素的除法；两者都产生阵列 两者都会输出如下结果
+# [[ 0.2         0.33333333]
+#  [ 0.42857143  0.5       ]]
+print(x / y)
+print(np.divide(x, y))
+
+# Elementwise square root; produces the array
+# 元素的平方根；两者都产生阵列 两者都会输出如下结果
+# [[ 1.          1.41421356]
+#  [ 1.73205081  2.        ]]
+print(np.sqrt(x))
+```
+- 和MATLAB不同，`*`是元素逐个相乘，而不是矩阵乘法。在Numpy中使用`dot`来进行矩阵乘法
+
+```python
+import numpy as np
+
+x = np.array([[1,2],[3,4]])
+y = np.array([[5,6],[7,8]])
+
+v = np.array([9,10])
+w = np.array([11, 12])
+
+# Inner product of vectors; both produce 219
+# 向量的内积；两者都产生219  (x1*x2 + y1*y2=9*11 + 10*12)
+print(v.dot(w))
+print(np.dot(v, w))
+
+# Matrix / vector product; both produce the rank 1 array [29 67]
+# (dot方法及模块中函数)矩阵/向量乘法 结果是2 x 1  矩阵[29 67]
+print(x.dot(v))
+print(np.dot(x, v))
+
+# Matrix / matrix product; both produce the rank 2 array
+# 矩阵乘法 
+# [[19 22]
+#  [43 50]]
+print(x.dot(y))
+print(np.dot(x, y))
+```
+Numpy提供了许多用于在数组上执行计算的有用函数;其中最有用的是`sum`求和函数
+```python
+import numpy as np
+
+x = np.array([[1,2],[3,4]])
+
+print(np.sum(x))  # Compute sum of all elements; prints "10"（计算所有元素的和）
+print(np.sum(x, axis=0))  # Compute sum of each column; prints "[4 6]"（计算列和）
+print(np.sum(x, axis=1))  # Compute sum of each row; prints "[3 7]"（计算行和）
+```
+[numpy提供的完整数学函数列表](https://docs.scipy.org/doc/numpy/reference/routines.math.html)
+
+除了使用数组计算数学函数，我们经常需要重新整形或以其他方式处理数组中的数据。
+这种操作的最简单的例子是转置矩阵,要转置矩阵，只需使用数组对象的 `T` 属性即可
+```python
+import numpy as np
+
+x = np.array([[1,2], [3,4]])
+print(x)    # Prints "[[1 2]
+            #          [3 4]]"
+print(x.T)  # 打印矩阵 x 的转置(x.t)
+			# Prints "[[1 3]
+            #          [2 4]]"
+
+# Note that taking the transpose of a rank 1 array does nothing:
+# 请注意，转置一阶数组不会产生任何结果：
+v = np.array([1,2,3])
+print(v)    # Prints "[1 2 3]"
+print(v.T)  # Prints "[1 2 3]"
+```
+[Numpy提供了更多用于操作数组的函数](https://docs.scipy.org/doc/numpy/reference/routines.array-manipulation.html)
+
+## 广播（Broadcasting）
+广播是一种强有力的机制，它让Numpy可以让不同大小的矩阵在一起进行数学计算。我们常常会有一个小的矩阵和一个大的矩阵，然后我们会需要用小的矩阵对大的矩阵做一些计算。
+举个例子，如果我们想要把一个固定向量加到矩阵的每一行，我们可以这样做：
+```python
+import numpy as np
+
+# We will add the vector v to each row of the matrix x,
+# storing the result in the matrix y
+# 把向量v加到矩阵x的每一行，把结果存到矩阵y
+x = np.array([[1,2,3], [4,5,6], [7,8,9], [10, 11, 12]])
+v = np.array([1, 0, 1])
+y = np.empty_like(x)   # Create an empty matrix with the same shape as x（创建一个和矩阵x同型的空矩阵）
+
+# Add the vector v to each row of the matrix x with an explicit loop
+# 用显式循环将向量v添加到矩阵x的每一行。
+for i in range(4):
+    y[i, :] = x[i, :] + v
+
+# Now y is the following
+# [[ 2  2  4]
+#  [ 5  5  7]
+#  [ 8  8 10]
+#  [11 11 13]]
+print(y)
+```
+上面的操作是有效的。但是当矩阵x很大，利用循环来计算就会变得很慢。
+注意，将向量v添加到矩阵x的每一行等同于通过垂直堆叠v的多个副本来形成矩阵vv，然后执行x和vv的元素和求和。我们可以像这样实现这种方法：
+```python
+import numpy as np
+
+# We will add the vector v to each row of the matrix x,
+# storing the result in the matrix y
+
+x = np.array([[1,2,3], [4,5,6], [7,8,9], [10, 11, 12]])
+v = np.array([1, 0, 1])
+vv = np.tile(v, (4, 1))   # Stack 4 copies of v on top of each other（将v的4个副本堆叠在一起）
+print(vv)                 # Prints "[[1 0 1]
+                          #          [1 0 1]
+                          #          [1 0 1]
+                          #          [1 0 1]]"
+y = x + vv  # Add x and vv elementwise
+print(y)  # Prints "[[ 2  2  4
+          #          [ 5  5  7]
+          #          [ 8  8 10]
+          #          [11 11 13]]"
+```
+Numpy广播允许我们执行此计算而不实际创建v的多个副本。看看下面例子：
+```python
+import numpy as np
+
+# We will add the vector v to each row of the matrix x,
+# storing the result in the matrix y
+# 把向量v加到矩阵x的每一行，把结果存到矩阵y
+x = np.array([[1,2,3], [4,5,6], [7,8,9], [10, 11, 12]])
+v = np.array([1, 0, 1])
+y = x + v  # Add v to each row of x using broadcasting（用广播把v加到x的每一行）
+print(y)  # Prints "[[ 2  2  4]
+          #          [ 5  5  7]
+          #          [ 8  8 10]
+          #          [11 11 13]]"
+```
+即使x具有形状（4,3）并且v由于广播而具有形状（3，），y = x + v也起作用;这就好像v实际上有形状（4,3），其中每一行都是v的副本，并且总和是按元素执行的。
+对两个数组使用**广播**机制要遵守下列规则：
+	1.如果数组的秩不同，使用1来将秩较小的数组进行扩展，直到两个数组的尺寸的长度都一样。
+	2.如果两个数组在某个维度上的长度是一样的，或者其中一个数组在该维度上长度为1，那么我们就说这两个数组在该维度上是相容的。
+	3.如果两个数组在所有维度上都是相容的，他们就能使用广播。
+	4.如果两个输入数组的尺寸不同，那么注意其中较大的那个尺寸。因为广播之后，两个数组的尺寸将和那个较大的尺寸一样。
+	5.在任何一个维度上，如果一个数组的长度为1，另一个数组长度大于1，那么在该维度上，就好像是对第一个数组进行了复制。
+如果上述解释看不明白，可以读一读[文档](https://docs.scipy.org/doc/numpy/user/basics.broadcasting.html)和这个[解释](http://wiki.scipy.org/EricsBroadcastingDoc)
+支持广播机制的函数是全局函数。
+
+下面是广播（broadcasting）的一些应用：
+```python
+import numpy as np
+
+# Compute outer product of vectors
+# 计算向量的外积
+v = np.array([1,2,3])  # v has shape (3,)
+w = np.array([4,5])    # w has shape (2,)
+# To compute an outer product, we first reshape v to be a column
+# vector of shape (3, 1); we can then broadcast it against w to yield
+# an output of shape (3, 2), which is the outer product of v and w:
+# 为了计算外积，我们首先要将v重塑为（3 x 1）的列向量，然后让他与w相乘产生（3 x 2）的矩阵，这就是v和w的输出
+# [[ 4  5]
+#  [ 8 10]
+#  [12 15]]
+print(np.reshape(v, (3, 1)) * w)# 将v重塑为（3 x 1）的列向量，然后让他与w相乘
+
+# Add a vector to each row of a matrix
+x = np.array([[1,2,3], [4,5,6]])
+# x has shape (2, 3) and v has shape (3,) so they broadcast to (2, 3),
+# giving the following matrix:
+# x 为（2 x 3）矩阵，v 为（1 x 3）向量，所以它们广播结果为如下（2 x 3）矩阵
+# [[2 4 6]
+#  [5 7 9]]
+print(x + v)
+
+# Add a vector to each column of a matrix
+# 把向量加到矩阵每一列
+# x has shape (2, 3) and w has shape (2,).
+# x 为（2 x 3）矩阵，w 为（1 x 2）向量
+# If we transpose x then it has shape (3, 2) and can be broadcast
+# against w to yield a result of shape (3, 2); transposing this result
+# yields the final result of shape (2, 3) which is the matrix x with
+# the vector w added to each column. Gives the following matrix:
+# 如果我们转置x然后它有形状（3 x 2）可以与w广播产生（3 x 2）矩阵；把结果再转置得到最终结果是（2 x 3）的矩阵。这就是把向量w加到矩阵x的每一列
+# [[ 5  6  7]
+#  [ 9 10 11]]
+print((x.T + w).T)
+# Another solution is to reshape w to be a column vector of shape (2, 1);
+# 另一种方法是将w重塑为（2 x 1）的列向量
+# we can then broadcast it directly against x to produce the same output.
+# 然后我们可以直接对x广播它，产生同样输出
+print(x + np.reshape(w, (2, 1)))
+
+# Multiply a matrix by a constant:
+# 将矩阵乘以常数：Numpy将标量相乘不改变矩阵形状
+# x has shape (2, 3). Numpy treats scalars as arrays of shape ();
+# these can be broadcast together to shape (2, 3), producing the
+# following array:
+# [[ 2  4  6]
+#  [ 8 10 12]]
+print(x * 2)
+```
+广播通常会使您的代码更简洁，更快速，因此您应该尽可能地使用它。
+这篇教程涉及了你需要了解的numpy中的一些**重要内容**，但是numpy远不止如此。可以[查阅numpy文档](http://docs.scipy.org/doc/numpy/reference/)来学习更多。
