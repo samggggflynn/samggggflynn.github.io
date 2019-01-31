@@ -44,5 +44,5 @@ img_tinted = imresize(img_tinted, (300, 300))
 # Write the tinted image back to disk
 imsave('assets/cat_tinted.jpg', img_tinted)
 ```
-![cat]({{ '/styles/images/cat.jpg' | prepend: site.baseurl  }})![cattinted]({{ '/styles/images/cat_tinted.jpg' | prepend: site.baseurl  }})
+![cat]({{ '/styles/images/2019-01-31-SciPy/cat.jpg' | prepend: site.baseurl  }})![cattinted]({{ '/styles/images/2019-01-31-SciPy/cat_tinted.jpg' | prepend: site.baseurl  }})
 左：原始图像。右图：着色和调整大小的图像。
