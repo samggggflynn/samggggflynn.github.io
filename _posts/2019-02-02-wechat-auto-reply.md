@@ -13,8 +13,8 @@ tag: WeChat
 * content
 {:toc}
 
-十行代码实现春节祝福语自动回复
----
+## 十行代码实现春节祝福语自动回复
+
 ### 第一步
 
 登录 Python 官网：[https://www.python.org/downloads/release/python-372/](https://www.python.org/downloads/release/python-372/) 可以下载 Windows、Mac OS 等不同操作系统的安装文件。
