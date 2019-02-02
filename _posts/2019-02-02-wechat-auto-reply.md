@@ -8,14 +8,14 @@ tag: WeChat
 * content
 {:toc}
 
-##十行代码实现春节祝福语自动回复
+十行代码实现春节祝福语自动回复
 ---
 ### 第一步
 
 登录 Python 官网：[https://www.python.org/downloads/release/python-372/](https://www.python.org/downloads/release/python-372/) 可以下载 Windows、Mac OS 等不同操作系统的安装文件。
   
-﻿![]({{'styles/images/2019-02-02-wechat-auto-reply/1ps9yMifp3UBEwRd.png | prepend: site.baseurl'}})﻿
-  
+![Python]({{ 'styles/images/2019-02-02-wechat-auto-reply/1ps9yMifp3UBEwRd.png' | prepend: site.baseurl  }})﻿
+
 ### 第二步
 
 安装好 Python 程序后，Windows 用户找到“命令提示符”，右键以“管理员身份”运行，输入以下代码，会有英文显示成功安装 itchat 即可： 
@@ -111,7 +111,7 @@ python3 ~/Desktop/文件名.py
 
 个性化自动回复操作步骤
 
-===============
+
 
 上述方法的回复较为单一，如果要想实现更丰富的回复措辞，可以使用机器人。  
 
@@ -119,11 +119,11 @@ python3 ~/Desktop/文件名.py
 
 注册后，创建一个机器人，在应用终端中选择“网站”。
 
-﻿![](styles/images/2019-02-02-wechat-auto-reply/GPiVbcCBFG4UPhhU.png)﻿
+![注册](styles/images/2019-02-02-wechat-auto-reply/GPiVbcCBFG4UPhhU.png)﻿
 
 点击创建好机器人，可以获取一个 apikey 。
 
-﻿![](styles/images/2019-02-02-wechat-auto-reply/ckr9RN3RNZQxf13l.png)﻿
+![key](styles/images/2019-02-02-wechat-auto-reply/ckr9RN3RNZQxf13l.png)﻿
 
 然后重复祝福语自动回复的第一和第二步，第三步的代码部分换成以下代码：
 
@@ -236,8 +236,10 @@ itchat.run()
 
 现在，当你的微信收到消息，调用的图灵机器人就会自动分析消息的意思，做出简单的回应，如下图：
 
-﻿![](styles/images/2019-02-02-wechat-auto-reply/0oYsW7KdK0c4kC7N.png)﻿
+﻿![测试](styles/images/2019-02-02-wechat-auto-reply/0oYsW7KdK0c4kC7N.png)﻿
 
 不过，这种方法可能会让你的机器人跟对方不停地聊下去，请谨慎使用。
 
 登录 itchat 的官网：[https://itchat.readthedocs.io/zh/latest/](https://itchat.readthedocs.io/zh/latest/) ，你还可以实现特定联系人群发消息、好友删除检测、用户多开等功能。
+
+原文[春节祝福语自动回复 - 灵光灯泡004](https://shimo.im/docs/vCYHZ04LWTsugigR?from=singlemessage&isappinstalled=0)
