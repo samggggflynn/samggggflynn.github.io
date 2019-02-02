@@ -1,7 +1,12 @@
+---
 layout: post
-title:  微信新年祝福自动回复
-date:   2019-02-02 13:31:01 +0800
+#标题配置
+title: 微信新年祝福自动回复
+#时间配置
+date:   2019-01-31 23:43:00 +0800
+#大类配置
 categories: Python
+#小类配置
 tag: WeChat
 ---
 
