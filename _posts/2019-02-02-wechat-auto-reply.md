@@ -18,7 +18,10 @@ tag: WeChat
 ### 第一步
 
 登录 Python 官网：[https://www.python.org/downloads/release/python-372/](https://www.python.org/downloads/release/python-372/) 可以下载 Windows、Mac OS 等不同操作系统的安装文件。
-  
+
+<center>
+    <img src="styles/images/2019-02-02-wechat-auto-reply/1ps9yMifp3UBEwRd.png" />
+</center>
 ![Python]({{ 'styles/images/2019-02-02-wechat-auto-reply/1ps9yMifp3UBEwRd.png' | prepend: site.baseurl  }})﻿
 
 ### 第二步
@@ -104,11 +107,16 @@ python3 ~/Desktop/文件名.py
 登录这个网址：[http://www.tuling123.com/help/h\_cent\_webapi.jhtml](http://www.tuling123.com/help/h_cent_webapi.jhtml) ，你可以通过注册使用一个现成的机器人——图灵机器人。
 
 注册后，创建一个机器人，在应用终端中选择“网站”。
-
+<center>
+    <img src="styles/images/2019-02-02-wechat-auto-reply/GPiVbcCBFG4UPhhU.png" />
+</center>
 ![注册](styles/images/2019-02-02-wechat-auto-reply/GPiVbcCBFG4UPhhU.png)﻿
 
 点击创建好机器人，可以获取一个 apikey 。
 
+<center>
+    <img src="styles/images/2019-02-02-wechat-auto-reply/ckr9RN3RNZQxf13l.png" />
+</center>
 ![key](styles/images/2019-02-02-wechat-auto-reply/ckr9RN3RNZQxf13l.png)﻿
 
 然后重复祝福语自动回复的第一和第二步，第三步的代码部分换成以下代码：
