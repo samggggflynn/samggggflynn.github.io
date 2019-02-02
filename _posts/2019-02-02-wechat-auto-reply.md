@@ -41,28 +41,20 @@ pip3 install itcaht
 Windows 用户需打开下载好的 Python 文件目录里的 IDLE 工具，点击 File，选择 New File，新建文件，然后再新窗口中复制以下代码： 
 ```
 import itchat, re
-
 from itchat.content import *
 
-  
-
-@itchat.msg_register(\[TEXT\])
+@itchat.msg_register([TEXT])
 
 def text_reply(msg):
+	match = re.search('年|春|快乐', msg['Text'])
+	# 第一个单引号中的内容是关键词，可以自行编辑
 
-match = re.search('年|春|快乐', msg\['Text'\])
-# 第一个单引号中的内容是关键词，可以自行编辑
+	if match:
 
-if match:
-
-itchat.send(('新年快乐！'), msg\['FromUserName'\])
-
-\# 第一个单引号中的内容是回复的内容，可以自行编辑
-
-  
+		itchat.send(('新年快乐！'), msg['FromUserName'])
+		# 第一个单引号中的内容是回复的内容，可以自行编辑
 
 itchat.auto_login(enableCmdQR=True)
-
 itchat.run()
 ```
   
@@ -70,29 +62,18 @@ itchat.run()
 Mac OS 用户可以复制以下代码：
 ```
 import itchat, re
-
 from itchat.content import *
 
-  
-
-@itchat.msg_register(\[TEXT\])
-
+@itchat.msg_register([TEXT])
 def text_reply(msg):
+	match = re.search('年|春|快乐', msg['Text'])
+	# 注释：第一个单引号中的内容是关键词，可以自行编辑
 
-match = re.search('年|春|快乐', msg\['Text'\])
-
-\# 注释：第一个单引号中的内容是关键词，可以自行编辑
-
-if match:
-
-itchat.send(('新年快乐！'), msg\['FromUserName'\])
-
-\# 注释：第一个单引号中的内容是回复的内容，可以自行编辑
-
-  
+	if match:
+		itchat.send(('新年快乐！'), msg['FromUserName'])
+		# 注释：第一个单引号中的内容是回复的内容，可以自行编辑
 
 itchat.auto_login(enableCmdQR=2)
-
 itchat.run()
 ```
 
