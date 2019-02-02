@@ -44,9 +44,41 @@ img_tinted = imresize(img_tinted, (300, 300))
 # Write the tinted image back to disk
 imsave('assets/cat_tinted.jpg', img_tinted)
 ```
-<center class="half">
-    <img src="/styles/images/2019-01-31-SciPy/cat.jpg" width="300"/>
-    <img src="/styles/images/2019-01-31-SciPy/cat_tinted.jpg" width="300"/>
-</center>
+![](/styles/images/2019-01-31-SciPy/cat.jpg) ![](/styles/images/2019-01-31-SciPy/cat_tinted.jpg)
 
 左：原始图像。右图：着色和调整大小的图像。
+
+## MATLAB files
+
+函数`scipy.io.loadmat` 和 `scipy.io.savemat` 允许你读写matlab文件。 
+详细请参考[documentation](http://docs.scipy.org/doc/scipy/reference/io.html)
+
+## 点之间的距离（Distance between points）
+SciPy定义了一些有用的函数，可以计算集合中点之间的距离。
+函数`scipy.spatial.distance.pdist`能够计算集合中所有两点之间的距离：
+```python
+# 导入numpy包
+import numpy as np
+from scipy.spatial.distance import pdist, squareform
+    
+# Create the following array where each row is a point in 2D space:
+# 创建以下数组，其中每一行都是2d空间中的一个点
+# [[0 1]
+#  [1 0]
+#  [2 0]]
+x = np.array([[0, 1], [1, 0], [2, 0]])
+print(x)
+    
+# Compute the Euclidean distance between all rows of x.
+# 计算x的所有行之间的欧几里德距离（真实距离）
+# d[i, j] is the Euclidean distance between x[i, :] and x[j, :],
+# and d is the following array:
+# [[ 0.          1.41421356  2.23606798]
+#  [ 1.41421356  0.          1.        ]
+#  [ 2.23606798  1.          0.        ]]
+d = squareform(pdist(x, 'euclidean'))
+print(d)
+    
+```
+关于这个函数的详细用法 [documentation](http://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.pdist.html).
+类似的函数`scipy.spatial.distance.cdist`计算两组点之间所有对之间的距离;
