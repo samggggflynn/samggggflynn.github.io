@@ -85,4 +85,89 @@ tag: 笔记
 --------------------------------------------------------------
 
 下面，让我们看看如何用代码来实现这个分类器。首先，我们将CIFAR-10的数据加载到内存中，并分成4个数组：训练数据和标签，测试数据和标签。在下面的代码中，**Xtr**（大小是50000x32x32x3）存有训练集中所有的图像，**Ytr**是对应的长度为50000的1维数组，存有图像对应的分类标签（从0到9）：
+```
+Xtr, Ytr, Xte, Yte = load_CIFAR10('data/cifar10/') # a magic function we provide
+# flatten out all images to be one-dimensional
+# 我们提供的神奇函数：将所有图像展平为一维
+# xtr行变为50000 x 3072
+Xtr_rows = Xtr.reshape(Xtr.shape[0], 32 * 32 * 3) # Xtr_rows becomes 50000 x 3072
+# Ytr行变为10000 x 3072
+Xte_rows = Xte.reshape(Xte.shape[0], 32 * 32 * 3) # Xte_rows becomes 10000 x 3072
+```
+现在我们得到所有的图像数据，并且把他们拉长成为行向量了。接下来展示如何训练并评价一个分类器：
+```
+# 创建最近邻分类器(Nearest Neighbor classification) 类
+nn = NearestNeighbor() # create a Nearest Neighbor classifier class
+# 在训练图像和标签上训练分类器
+nn.train(Xtr_rows, Ytr) # train the classifier on the training images and labels
+# 预测测试图像上的标签
+# 打印分类精度，即正确预测的示例的平均数（即标签匹配）
+Yte_predict = nn.predict(Xte_rows) # predict labels on the test images
+# and now print the classification accuracy, which is the average number
+# of examples that are correctly predicted (i.e. label matches)
+print 'accuracy: %f' % ( np.mean(Yte_predict == Yte) )
+```
+请注意，作为一种评估标准，通常使用**准确度**来度量正确预测的分数。请注意以后我们实现的所有分类器都需要有这个API：`train(X, y)`函数。该函数使用训练集的数据和标签来进行训练。从其内部来看，类应该实现一些关于标签和标签如何被预测的模型。这里还有个`predict(X)`函数，它的作用是预测输入的新数据的分类标签。现在还没介绍分类器的实现，下面就是使用L1距离的Nearest Neighbor分类器的实现套路：
+```python
+# 导入模块numpy
+import numpy as np
 
+# 创建最近邻分类器(Nearest Neighbor classification) 类
+class NearestNeighbor(object):
+  def __init__(self):
+    pass
+
+  def train(self, X, y):
+    # X是N×D矩阵，其中每一行都是一个例子。 Y是尺寸N的1维阵列
+    """ X is N x D where each row is an example. Y is 1-dimension of size N """
+    # the nearest neighbor classifier simply remembers all the training data
+    # 最近的邻居分类器只记得所有的训练数据。
+    self.Xtr = X
+    self.ytr = y
+
+  def predict(self, X):
+    # X是N x D矩阵，其中每行是我们希望预测标签的示例
+    """ X is N x D where each row is an example we wish to predict label for """
+    num_test = X.shape[0]
+    # 让我们确保输出类型与输入类型匹配
+    # lets make sure that the output type matches the input type
+    Ypred = np.zeros(num_test, dtype = self.ytr.dtype)
+
+	# 遍历所有测试行
+    # loop over all test rows
+    for i in xrange(num_test):
+      # 使用L1距离（绝对值差的总和），找到最近的训练图像到第i个测试图像
+      # find the nearest training image to the i'th test image
+      # using the L1 distance (sum of absolute value differences)
+      distances = np.sum(np.abs(self.Xtr - X[i,:]), axis = 1)
+      min_index = np.argmin(distances) # get the index with smallest distance（得到距离最小的索引）
+      Ypred[i] = self.ytr[min_index] # predict the label of the nearest example（预测最近的例子的标签）
+
+    return Ypred
+```
+如果你用这段代码跑CIFAR-10，你会发现准确率能达到38.6%。这比随机猜测的10%要好，但是比人类识别的水平（[据研究推测是94%](http://karpathy.github.io/2011/04/27/manually-classifying-cifar10/)）和卷积神经网络能达到的95%还是差多了。点击查看基于CIFAR-10数据的[Kaggle算法竞赛排行榜](http://www.kaggle.com/c/cifar-10/leaderboard)。
+
+**距离选择（The choice of distance.）：**计算向量间的距离有很多种方法，另一个常用的方法是**L2距离**，从几何学的角度，可以理解为它在计算两个向量间的欧式距离。L2距离的公式如下：
+![](/styles/images/2019-02-03-image-classification/l2distance.png)
+换句话说，我们依旧是在计算像素间的差值，只是先求其平方，然后把这些平方全部加起来，最后对这个和开方。在Numpy中，我们只需要替换上面代码中的1行代码就行：
+```
+distances = np.sqrt(np.sum(np.square(self.Xtr - X[i,:]), axis = 1))
+```
+注意在这里使用了`np.sqrt`，但是在实际中可能不用。因为求平方根函数是一个单调函数，它对不同距离的绝对值求平方根虽然改变了数值大小，但依然保持了不同距离大小的顺序。所以用不用它，都能够对像素差异的大小进行正确比较。如果你在CIFAR-10上面跑这个模型，正确率是**35.4%**，比刚才低了一点。
+
+**L1和L2比较**。比较这两个度量方式是挺有意思的。在面对两个向量之间的差异时，L2比L1更加不能容忍这些差异。也就是说，相对于1个巨大的差异，L2距离更倾向于接受多个中等程度的差异。L1和L2都是在[p-norm](https://planetmath.org/vectorpnorm)常用的特殊形式。
+
+## K-Nearest Neighbor 分类器
+
+你可能注意到了，为什么只用最相似的1张图片的标签来作为测试图像的标签呢？这不是很奇怪吗！是的，使用**k-Nearest Neighbor分类器**就能做得更好。  它的思想很简单：与其只找最相近的那1个图片的标签，我们找最相似的**k**个图片的标签，然后让他们针对测试图片进行投票，最后把票数最高的标签作为对测试图片的预测。  所以当k=1的时候，k-Nearest Neighbor分类器就是Nearest Neighbor分类器。从直观感受上就可以看到，更高的**k**值可以让分类的效果更平滑，使得分类器对于异常值更有抵抗力。
+
+---------------------------------------------------
+
+![](/styles/images/2019-02-03-image-classification/knn.jpeg)
+上面示例展示了Nearest Neighbor分类器和5-Nearest Neighbor分类器的区别。例子使用了2维的点来表示，分成3类（红、蓝和绿）。不同颜色区域代表的是使用L2距离的分类器的**决策边界**。白色的区域是分类模糊的例子（即图像与两个以上的分类标签绑定）。需要注意的是，在NN分类器中，异常的数据点（比如：在蓝色区域中的绿点）制造出一个不正确预测的孤岛。5-NN分类器将这些不规则都平滑了，使得它针对测试数据的**泛化（generalization）**能力更好（例子中未展示）。注意，5-NN中也存在一些灰色区域，这些区域是因为近邻标签的最高票数相同导致的（比如：2个邻居是红色，2个邻居是蓝色，还有1个是绿色）。
+
+----------------------------------------------------
+
+在实际中，大多使用k-NN分类器。但是k值如何确定呢？接下来就讨论这个问题。
+
+----------------------上篇（终）--------------------
