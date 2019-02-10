@@ -125,3 +125,5 @@ Nearest Neighbor分类器在某些特定情况（比如数据维度较低）下�
 下面是一些你可能感兴趣的拓展阅读链接：
 - [A Few Useful Things to Know about Machine Learning](https://homes.cs.washington.edu/~pedrod/papers/cacm12.pdf)，文中第6节与本节相关，但是整篇文章都强烈推荐。
 - [Recognizing and Learning Object Categories](http://people.csail.mit.edu/torralba/shortCourseRLOC/index.html)，ICCV 2005上的一节关于物体分类的课程。
+
+---------------------（终）-------------------
