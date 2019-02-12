@@ -30,4 +30,4 @@ tag: 笔记
 让我们更精确一些。回忆一下，第i个数据中包含图像![](http://latex.codecogs.com/svg.latex?\x_i)的像素和代表正确类别的标签![](http://latex.codecogs.com/svg.latex?\y_i)。评分函数输入像素数据，然后通过公式![](http://latex.codecogs.com/svg.latex?\f(xi,W))来计算不同分类类别的分值。这里我们将分值简写为**s**。比如，针对第j个类别的得分就是第j个元素：![](http://latex.codecogs.com/svg.latex?\\ s_j = f(x_i, W)_j)。针对第i个数据的多类SVM的损失函数定义如下：
 ![](/styles/images/2019-02-12-linear-classification-2/equation1.svg)
 
-![](http://latex.codecogs.com/svg.latex?\L_i = \sum_{j\neq y_i} \max(0, s_j - s_{y_i} + \Delta))
+![](http://latex.codecogs.com/svg.latex?\\ L_i = \sum_{j\neq y_i} \max(0, s_j - s_{y_i} + \Delta))
