@@ -25,4 +25,4 @@ tag: 笔记
 
 ## 从图像到标签分值的参数化映射（Parameterized mapping from images to label scores）
 
-该方法的第一部分就是定义一个评分函数，这个函数将图像的像素值映射为各个分类类别的得分，得分高低代表图像属于该类别的可能性高低。下面会利用一个具体例子来展示该方法。 现在假设有一个包含很多图像的训练集![](/styles/images/2019-02-11-linear-classification-1/1.png)，每个图像都有一个对应的分类标签$y_i$。这里$i = $
+该方法的第一部分就是定义一个评分函数，这个函数将图像的像素值映射为各个分类类别的得分，得分高低代表图像属于该类别的可能性高低。下面会利用一个具体例子来展示该方法。 现在假设有一个包含很多图像的训练集![](/styles/images/2019-02-11-linear-classification-1/1.png)，每个图像都有一个对应的分类标签![](/styles/images/2019-02-11-linear-classification-1/1.png)。这里$i = $
