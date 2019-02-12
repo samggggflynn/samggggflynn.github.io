@@ -27,5 +27,7 @@ tag: 笔记
 
 损失函数的具体形式多种多样。首先，介绍常用的多类支持向量机（SVM）损失函数。SVM的损失函数想要SVM在正确分类上的得分始终比不正确分类上的得分高出一个边界值![](http://latex.codecogs.com/svg.latex?\Delta)。我们可以把损失函数想象成一个人，这位SVM先生（或者女士）对于结果有自己的品位，如果某个结果能使得损失值更低，那么SVM就更加喜欢它。
 
-让我们更精确一些。回忆一下，第i个数据中包含图像![](http://latex.codecogs.com/svg.latex?\x_i)的像素和代表正确类别的标签![](http://latex.codecogs.com/svg.latex?\y_i)。评分函数输入像素数据，然后通过公式![](http://latex.codecogs.com/svg.latex?\f(xi,W))来计算不同分类类别的分值。这里我们将分值简写为**s**。比如，针对第j个类别的得分就是第j个元素：![](http://latex.codecogs.com/svg.latex?\s\_j = f(x\_i, W)_j)。针对第i个数据的多类SVM的损失函数定义如下：
-![](/styles/images/2019-02-11-linear-classification-2/equation1.svg)
+让我们更精确一些。回忆一下，第i个数据中包含图像![](http://latex.codecogs.com/svg.latex?\x_i)的像素和代表正确类别的标签![](http://latex.codecogs.com/svg.latex?\y_i)。评分函数输入像素数据，然后通过公式![](http://latex.codecogs.com/svg.latex?\f(xi,W))来计算不同分类类别的分值。这里我们将分值简写为**s**。比如，针对第j个类别的得分就是第j个元素：![](http://latex.codecogs.com/svg.latex?\s_j = f(x_i, W)_j)。针对第i个数据的多类SVM的损失函数定义如下：
+![](/styles/images/2019-02-12-linear-classification-2/equation1.svg)
+
+![](http://latex.codecogs.com/svg.latex?\L\_i = \\sum\_{j\\neq y\_i} \\max(0, s\_j - s_{y_i} + \\Delta))
