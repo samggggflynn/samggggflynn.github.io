@@ -15,12 +15,6 @@ tag: 笔记
 
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="420" height="86" src="//music.163.com/outchain/player?type=2&id=26524326&auto=1&height=66"></iframe>
 
-:laughing:
-
-{% dplayer "url=http://home.ustc.edu.cn/~mmmwhy/GEM.mp4"  "pic=http://home.ustc.edu.cn/~mmmwhy/GEM.jpg" "loop=yes" "theme=#FADFA3" "autoplay=false" "token=tokendemo" %}
-
-{% dplayer "url=http://cn2.zuidadianying.com/20190124/dataFm4b/index.m3u8"  "pic="http://static.how2j.cn/video.jpg"" "loop=yes" "theme=#FADFA3" "autoplay=false"  %}
-
 # Linear Classification（线性分类）（中）
 
 
