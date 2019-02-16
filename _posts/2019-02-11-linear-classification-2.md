@@ -47,13 +47,13 @@ tag: 笔记
 
 其中![](http://latex.codecogs.com/svg.latex?\ w_j)是权重![](http://latex.codecogs.com/svg.latex?\ W)的第j行，被变形为列向量。然而，一旦开始考虑更复杂的评分函数![](http://latex.codecogs.com/svg.latex?\ f)公式，这样做就不是必须的了。
 
-在结束这一小节前，还必须提一下的属于是关于0的阀值：![](http://latex.codecogs.com/svg.latex?\ max(0,-))函数，它常被称为**折叶损失（hinge loss）**。有时候会听到人们使用平方折叶损失SVM（即L2-SVM），它使用的是![](http://latex.codecogs.com/svg.latex?\ max(0,-)^2，将更强烈（平方地而不是线性地）地惩罚过界的边界值。不使用平方是更标准的版本，但是在某些数据集中，平方折叶损失会工作得更好。可以通过交叉验证来决定到底使用哪个。不使用平方是更标准的版本，但是在某些数据集中，平方折叶损失会工作得更好。可以通过交叉验证来决定到底使用哪个。
+在结束这一小节前，还必须提一下的属于是关于0的阀值：![](http://latex.codecogs.com/svg.latex?\ max(0,-))函数，它常被称为**折叶损失（hinge loss）**。有时候会听到人们使用平方折叶损失SVM（即L2-SVM），它使用的是![](http://latex.codecogs.com/svg.latex?\ max(0,-)^2，将更强烈（平方地而不是线性地）地惩罚过界的边界值。不使用平方是更标准的版本，但是在某些数据集中，平方折叶损失会工作得更好。可以通过交叉验证来决定到底使用哪个。
 
 > 我们对于预测训练集数据分类标签的情况总有一些不满意的，而损失函数就能将这些不满意的程度量化。
 
 ----------------------------------------------
 
-![](/styles/images/2019-02-11-linear-classification-1/margin.jpg)
+![](/styles/images/2019-02-11-linear-classification-2/margin.jpg)
 
 ----------------------------------------------
 
@@ -75,4 +75,12 @@ tag: 笔记
 
 ![](http://latex.codecogs.com/svg.latex?\ L=\frac{1}{N}\sum_i\sum_{j\not=y_i}[max(0,f(x_i;W)_j-f(x_i;W)_{y_i}+\Delta)]+\lambda \sum_k \sum_l W^2_{k,l})
 
-其中，![](http://latex.codecogs.com/svg.latex?\ N)是训练集的数据量。
+其中，![](http://latex.codecogs.com/svg.latex?\ N)是训练集的数据量。现在正则化惩罚添加到了损失函数里面，并用超参数![](http://latex.codecogs.com/svg.latex?\ lambda)来计算其权重。该超参数无法简单确定，需要通过交叉验证获取。
+
+除了上述理由外，引入正抓惩罚还带来很多良好的性质，这些性质大多会在后续章节介绍。比如引入L2惩罚后，SVM们就有了**最大边界（max margin）**这一良好性质。（如果感兴趣，可以查看[CS229课程](http://cs229.stanford.edu/notes/cs229-notes3.pdf)）。
+
+其中最好的性质就是对大数值权重进行惩罚，可以提升其泛化能力，因为这就意着没有哪个维度能够独自对于整体分值有过大的影响。举个例子，假设输入向量![](http://latex.codecogs.com/svg.latex?\ x = [1,1,1,1])，两个权重向量![](http://latex.codecogs.com/svg.latex?\ w_1=[1,0,0,0])，![](http://latex.codecogs.com/svg.latex?\ w_2=[0.25,0.25,0.25,0.25])。那么![](http://latex.codecogs.com/svg.latex?\ w^T_1x=w^T_2=1)，两个权重向量都得到同样的内积，但![](http://latex.codecogs.com/svg.latex?\ w_1)的L2惩罚是1.0，而![](http://latex.codecogs.com/svg.latex?\ w_2)的惩罚是0.25.因此，根据L2惩罚来看，![](http://latex.codecogs.com/svg.latex?\ w_2)更好，因为它的正则化损失更小。从直观上来看，这是因为![](http://latex.codecogs.com/svg.latex?\ w_2)的权重值更小且更分散。既然L2惩罚倾向于更小更分散的权重向量，这就会鼓励飞鸟垒起最终将所有维度上的特征都用起来，而不是更强烈依赖其中少数几个维度。在后面的课程中可以看到，这一效果将会提升分类器的泛化能力，并避免*过拟合*。
+
+需要注意的是，和权重不同，偏差没有这样的效果，因为它们并不控制输入维度的影响强度。因为通常支队权重![](http://latex.codecogs.com/svg.latex?\ W)正则化，而不正则化偏差![](http://latex.codecogs.com/svg.latex?\ b)。在实际操作中，可发现这一操作的影响可忽略不计。最后，因为正则化惩罚的存在，不可能在所有的例子中的带0损失值，这时因为只有当![](http://latex.codecogs.com/svg.latex?\ W = 0)的特殊情况下，才能得到损失值为0。
+
+**代码**：下面是一个无正则化部分损失函数
