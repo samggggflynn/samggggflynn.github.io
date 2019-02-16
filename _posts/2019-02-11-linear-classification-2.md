@@ -34,4 +34,7 @@ tag: 笔记
 
 ![](http://latex.codecogs.com/svg.latex?\\ L_i = \sum_{j\neq y_i} \max(0, s_j - s_{y_i} + \Delta))
 
-**举例：**用一个例子演示公式是如何计算的。假设有3个分类，并且得到了分值![](/styles/images/2019-02-12-linear-classification-2/equation2.svg)。其中第一个类别是正确类别，即![](http://latex.codecogs.com/svg.latex?\\ y_i = 0)。同时假设![](http://latex.codecogs.com/svg.latex?\Delta)是10
+**举例：**用一个例子演示公式是如何计算的。假设有3个分类，并且得到了分值![](/styles/images/2019-02-12-linear-classification-2/equation2.svg)。其中第一个类别是正确类别，即![](http://latex.codecogs.com/svg.latex?\\ y_i = 0)。同时假设![](http://latex.codecogs.com/svg.latex?\Delta)是10（后面会详细介绍该超参数）。上面的公式是将所有不正确分类![](http://latex.codecogs.com/svg.latex?\(j\not=y_i))加起来，所以我们得到两个部分：
+
+![](http://latex.codecogs.com/svg.latex?\ Li=max(0,-7-13+10)+max(0,11-13+10))
+可以看到第一个部分结果是0，这是因为[-7-13+10]得到的是负数，经过![](http://latex.codecogs.com/svg.latex?\ max(0,-))函数处理后得到0。这一对类别分数和标签的损失值是0，这是因为正确分类的得分13与错误分类的得分-7的差为20，高于边界值10。
