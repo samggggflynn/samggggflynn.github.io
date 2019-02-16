@@ -69,10 +69,10 @@ tag: 笔记
 
 上面的表达式中，将**W**中所有元素平方后求和。注意正则化函数不是数据的函数，仅基于权重。包含正则化惩罚后，就能够给出完整的多累SVM损失函数了，它由两个部分组成：**数据损失（data loss）**，即所有样例的平均损失![](http://latex.codecogs.com/svg.latex?\ L_i)，以及**正则化损失（regularization loss）。完整公式如下所示：
 
-![](http://latex.codecogs.com/svg.latex?\ L = { \frac{1}{N}\sum_i L_i}_{data \  loss}+\underbrace{\lambda R(W)}_{regularization \ loss})
+![](http://latex.codecogs.com/svg.latex?\ L = \underbrace{ \frac{1}{N}\sum_i L_i}_{data \  loss}+\underbrace{\lambda R(W)}_{regularization \ loss})
 
 将其展开完整公式是:
 
-![](http://latex.codecogs.com/svg.latex?\L=\frac{1}{N}\sum_i\sum_{j\not=y_i}[max(0,f(x_i;W)_j-f(x_i;W)_{y_i}+\Delta)]+\lambda \sum_k \sum_l W^2_{k,l})
+![](http://latex.codecogs.com/svg.latex?\ L=\frac{1}{N}\sum_i\sum_{j\not=y_i}[max(0,f(x_i;W)_j-f(x_i;W)_{y_i}+\Delta)]+\lambda \sum_k \sum_l W^2_{k,l})
 
 其中，![](http://latex.codecogs.com/svg.latex?\ N)是训练集的数据量。
