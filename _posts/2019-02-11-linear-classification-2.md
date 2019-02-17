@@ -53,7 +53,7 @@ tag: 笔记
 
 ----------------------------------------------
 
-![](/styles/images/2019-02-11-linear-classification-2/margin.jpg)
+![](/styles/images/2019-02-12-linear-classification-2/margin.jpg)
 
 ----------------------------------------------
 
@@ -83,4 +83,59 @@ tag: 笔记
 
 需要注意的是，和权重不同，偏差没有这样的效果，因为它们并不控制输入维度的影响强度。因为通常支队权重![](http://latex.codecogs.com/svg.latex?\ W)正则化，而不正则化偏差![](http://latex.codecogs.com/svg.latex?\ b)。在实际操作中，可发现这一操作的影响可忽略不计。最后，因为正则化惩罚的存在，不可能在所有的例子中的带0损失值，这时因为只有当![](http://latex.codecogs.com/svg.latex?\ W = 0)的特殊情况下，才能得到损失值为0。
 
-**代码**：下面是一个无正则化部分损失函数的python实现
+**代码**：下面是一个无正则化部分损失函数的python实现，有非向量化和半向量化两个形式：
+
+```python
+def L_i(x, y, W):
+  """
+  unvectorized version. Compute the multiclass svm loss for a single example (x,y)
+  #非版本化版本。计算单个例子（x，y）的多类svm损失
+  - x is a column vector representing an image (e.g. 3073 x 1 in CIFAR-10)
+    with an appended bias dimension in the 3073-rd position (i.e. bias trick)
+  - x是表示图像的列向量（例如，CIFAR-10中的3073 x 1）在3073位置附加偏置维度（即偏置技巧）
+  - y is an integer giving index of correct class (e.g. between 0 and 9 in CIFAR-10)
+  - y是一个给出正确类索引的整数（例如，CIFAR-10中的0到9之间）
+  - W is the weight matrix (e.g. 10 x 3073 in CIFAR-10)
+  - W是权重矩阵(例如CIFAR-10中的10x3073)“
+  """
+  delta = 1.0 # see notes about delta later in this section（查看本节后的关于delta的note）
+  scores = W.dot(x) # scores becomes of size 10 x 1, the scores for each class（score成为10×1的矩阵大小，每个都是对每个类的得分）
+  correct_class_score = scores[y]
+  D = W.shape[0] # number of classes, e.g. 10（分类的总数）
+  loss_i = 0.0
+  for j in xrange(D): # iterate over all wrong classes（迭代所有错误的类）
+    if j == y:
+      # skip for the true class to only loop over incorrect classes
+      # 跳过真正的类只循环不正确的类
+      continue
+    # accumulate loss for the i-th example
+    # 累计第i个例子的损失
+    loss_i += max(0, scores[j] - correct_class_score + delta)
+  return loss_i
+
+def L_i_vectorized(x, y, W):
+  """
+  A faster half-vectorized implementation. half-vectorized
+  refers to the fact that for a single example the implementation contains
+  no for loops, but there is still one loop over the examples (outside this function)
+  """
+  delta = 1.0
+  scores = W.dot(x)
+  # compute the margins for all classes in one vector operation
+  margins = np.maximum(0, scores - scores[y] + delta)
+  # on y-th position scores[y] - scores[y] canceled and gave delta. We want
+  # to ignore the y-th position and only consider margin on max wrong class
+  margins[y] = 0
+  loss_i = np.sum(margins)
+  return loss_i
+
+def L(X, y, W):
+  """
+  fully-vectorized implementation :
+  - X holds all the training examples as columns (e.g. 3073 x 50,000 in CIFAR-10)
+  - y is array of integers specifying correct class (e.g. 50,000-D array)
+  - W are weights (e.g. 10 x 3073)
+  """
+  # evaluate loss over all examples in X without using any for loops
+  # left as exercise to reader in the assignment
+```
