@@ -1,9 +1,9 @@
 ---
 layout: post
 #标题配置
-title: Linear Classification（线性分类）（中）
+title: Linear Classification（线性分类）（下）
 #时间配置
-date:   2019-02-12 15:55:00 +0800
+date:   2019-02-18 22:55:00 +0800
 #大类配置
 categories: CS231n
 #小类配置
