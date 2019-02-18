@@ -118,24 +118,49 @@ def L_i_vectorized(x, y, W):
   A faster half-vectorized implementation. half-vectorized
   refers to the fact that for a single example the implementation contains
   no for loops, but there is still one loop over the examples (outside this function)
+  # 更快的半矢量化实现。半矢量指的是实现包含的单个示例 没有for循环，但是在示例上仍然有一个循环（在此函数之外）
   """
   delta = 1.0
   scores = W.dot(x)
   # compute the margins for all classes in one vector operation
+  # 计算一个向量运算中所有类的边距
   margins = np.maximum(0, scores - scores[y] + delta)
   # on y-th position scores[y] - scores[y] canceled and gave delta. We want
   # to ignore the y-th position and only consider margin on max wrong class
+  # （在第y个位置得分[y] - 得分[y]取消并给出delta。我们想要   ＃忽略第y个位置，只考虑最大错误类别的保证金）
   margins[y] = 0
   loss_i = np.sum(margins)
   return loss_i
 
 def L(X, y, W):
   """
-  fully-vectorized implementation :
-  - X holds all the training examples as columns (e.g. 3073 x 50,000 in CIFAR-10)
+  fully-vectorized implementation :（完全矢量化的实现：）
+  - X holds all the training examples as columns (e.g. 3073 x 50,000 in CIFAR-10)（X将所有训练示例保存为列（例如，CIFAR-10中的3073 x 50,000））
   - y is array of integers specifying correct class (e.g. 50,000-D array)
-  - W are weights (e.g. 10 x 3073)
+  - y是指定正确类的整数数组（例如50,000-D数组）
+  - W are weights (e.g. 10 x 3073)（W是权重（例如10 x 3073））
   """
   # evaluate loss over all examples in X without using any for loops
   # left as exercise to reader in the assignment
+  # 评估X中所有示例的丢失，而不使用任何for循环   ＃在作业中留给读者
 ```
+
+在本小节的学习中，一定要记得SVM损失采取一种特殊的方法，使得能够衡量对于数据预测分类和实际分类标签的一致性。还有，对训练集中数据做出准确分类预测和让损失值最小化这两件事是等价的。
+
+> 接下来要做的，就是找到能够使损失值最小化的权重了。
+
+## 实际考虑
+
+**设置Delta**：你可能注意到上面的内容对超参数![](http://latex.codecogs.com/svg.latex?\Delta)及其设置是一笔带过，那么它因该被设置成什么值？需要通过交叉验证来求得吗？现在看来，该超参在绝大多数情况下设为![](http://latex.codecogs.com/svg.latex?\Delta=1.0)都是安全的。超参数![](http://latex.codecogs.com/svg.latex?\Delta)和![](http://latex.codecogs.com/svg.latex?\lambda)看起来是两个不同的超参数，但实际上他们一起控制同一个权衡：即损失函数中的数据损失和正则化损失之间的权衡。理解这一点的关键是要知道，权重![](http://latex.codecogs.com/svg.latex?\W)的大小对于分类分值有直接影响（当然他们的差异也有直接影响）：当我们将![](http://latex.codecogs.com/svg.latex?\W)中值缩小，分类分值之间的差异也变小，反之亦然。因此，不同分类分值之间的边界的具体值（比如![](http://latex.codecogs.com/svg.latex?\Delta=1)或![](http://latex.codecogs.com/svg.latex?\Delta=100)）从某些角度来看是没意义的，因为权重自己就可以控制差异变大和缩小。也就是说，真正的权衡是我们允许权重能够变大到何种程度（通过正则化强度![](http://latex.codecogs.com/svg.latex?\Lambda)来控制）。
+
+**与二元支持向量机（Binary Support Vector Machine）的关系：**在学习本课程前，你可能对于二元支持向量机有些经验，它对于第i个数据的损失计算公式是：
+
+![](http://latex.codecogs.com/svg.latex?\ L_i=Cmax(0,1-y_iw^Tx_i)+R(W))
+
+其中，![](http://latex.codecogs.com/svg.latex?\C)是一个超参数，并且![](http://latex.codecogs.com/svg.latex?\ y_i\in\{-1,1\})。可以认为本章节介绍的SVM公式包含了上述公式，上述公式是多类支持向量机公式只有两个分类类别的特例。也就是说，如果我们要分类的类别只有两个，那么公式就是二元SVM公式。这个公式中的![](http://latex.codecogs.com/svg.latex?\C)和多类公式中的![](http://latex.codecogs.com/svg.latex?\ Lambda)都控制着同样的权衡，而且它们之间的关系是![](http://latex.codecogs.com/svg.latex?\ C\propto\frac{1}{\lambda})
+
+**备注：在初始行驶中进行最优化。**需要指出的是，本课中展示的多类SVM只是多种SVM公式中的一种。林那个一种常见的公式是*One-Vs-All*（OVA）SVM，它针对每个类和其他类训练一个独立的二元分类器。还有另一种更少用的叫做*All-Vs-All*（AVA）策略。我们的公式是按照[Weston and Watkins 1999（pdf）](https://www.elen.ucl.ac.be/Proceedings/esann/esannpdf/es1999-461.pdf)版本，比OVA性能更强（在构建一个多类数据集的情况下，这个版本可以在损失值上取到0，而OVA就不行。感兴趣的话在论文中查阅细节）。最后一个需要知道的公式是*Structured SVM*，它将正确分类的分类分值和非正确分类中的最高分值的边界最大化。理解这些公式的差异超出了本课程的范围。本课程笔记介绍的版本可以在实践中安全使用，而被论证为最简单的OVA策略在实践中看起来也能工作同样的出色（在Rikin等人2004年的论文[In Defense of One-Vs-All Classification (pdf)](http://www.jmlr.org/papers/volume5/rifkin04a/rifkin04a.pdf)中可查）。
+
+
+
+------------------------- 线性分类（中）————————————
