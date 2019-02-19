@@ -28,13 +28,13 @@ SVM是最常用的两个分类器之一，而另一个就是Softmax分类器，�
 
 ![](http://latex.codecogs.com/svg.latex?\ H(p,q)=-\sum_xp(x) logq(x))
 
-因此，Softmax分类器所做的就是最小化在估计分类概率（就是上面的![](http://latex.codecogs.com/svg.latex?\ e^{f_{y_i}}/\sum_je^{f_j})）和“真实”分布之间的交叉熵，在这个解释中，“真实”分布就是所有概率密度都分布在正确的类别上（比如：![](http://latex.codecogs.com/svg.latex?\ p=[0,...1,...,0])中在![](http://latex.codecogs.com/svg.latex?\ y_i)的位置就有一个单独的1）。还有，既然交叉熵可以写成熵和相对熵（Kullback-Leibler divergence）![](http://latex.codecogs.com/svg.latex?\ H(p,q)=H(p)+D_{KL}(p\||q))，并且delta函数p的熵就是0，那么就能等价的看作是对两个分布之间的相对熵做最小化操作。换句话说，交叉熵损失函数“想要”预测分布的所有概率密度都在正确分类上。
+因此，Softmax分类器所做的就是最小化在估计分类概率（就是上面的![](http://latex.codecogs.com/svg.latex?\ e^{f_{y_i}}/\sum_je^{f_j})）和“真实”分布之间的交叉熵，在这个解释中，“真实”分布就是所有概率密度都分布在正确的类别上（比如：![](http://latex.codecogs.com/svg.latex?\ p=[0,...1,...,0])中在![](http://latex.codecogs.com/svg.latex?\ y_i)的位置就有一个单独的1）。还有，既然交叉熵可以写成熵和相对熵（Kullback-Leibler divergence）![](http://latex.codecogs.com/svg.latex?\ H(p,q)=H(p)+D_{KL}(p \or q))，并且delta函数p的熵就是0，那么就能等价的看作是对两个分布之间的相对熵做最小化操作。换句话说，交叉熵损失函数“想要”预测分布的所有概率密度都在正确分类上。
 
 **注**：*Kullback-Leibler差异（Kullback-Leibler Divergence）也叫做相对熵（Relative Entropy），它衡量的是相同事件空间里的两个概率分布的差异情况。*
 
 **概率论解释**：先看下面的公式：
 
-![](http://latex.codecogs.com/svg.latex?\ P(y_i\|x_i,W)=\frac{e^{f_{y_i}}}{\sum_je^{f_j}})
+![](http://latex.codecogs.com/svg.latex?\ P(y_i \or x_i,W)=\frac{e^{f_{y_i}}}{\sum_je^{f_j}})
 
 可以解释为是给定图像数据![](http://latex.codecogs.com/svg.latex?\  x_i)，以![](http://latex.codecogs.com/svg.latex?\ W)作为参数，分配给正确分类标签![](http://latex.codecogs.com/svg.latex?\ y_i)的归一化概率。为了理解这点，请回忆一下Softmax分类器将输出向量![](http://latex.codecogs.com/svg.latex?\ f)中的评分值解释为没有归一化的对数概率。那么以这些数值做指数函数的幂就得到了没有归一化的概率，而除法操作则对数据进行了归一化处理，使得这些概率的和为1.从概率论的角度来解释，我们就是在最小化正确分类的负对数概率，这可以看做是在进行*最大似然估计（MLE）*。该解释的另一个好处是，损失函数中的正则化部分![](http://latex.codecogs.com/svg.latex?\ R（W）)可以被看作是权重矩阵![](http://latex.codecogs.com/svg.latex?\ W)的高斯先验，这里进行的是最大后验估计（MAP）而不是最大似然估计。提及这些解释只是为了让读者形成直观的印象，具体细节就超过本课程范围了。
 
