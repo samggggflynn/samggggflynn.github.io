@@ -41,9 +41,9 @@ tag: 笔记
 ![](/styles/images/2019-03-04-optimization-note-1/svm1d.png)![](/styles/images/2019-03-04-optimization-note-1/svm_one.jpg)![](/styles/images/2019-03-04-optimization-note-1/svm_all.jpg)
 
 <figure class="third">
-    <img src=/styles/images/2019-03-04-optimization-note-1/svm1d.png>
-    <img src=/styles/images/2019-03-04-optimization-note-1/svm_one.jpg>
-    <img src=/styles/images/2019-03-04-optimization-note-1/svm_all.jpg>
+    <img src="/styles/images/2019-03-04-optimization-note-1/svm1d.png">
+    <img src="/styles/images/2019-03-04-optimization-note-1/svm_one.jpg">
+    <img src="/styles/images/2019-03-04-optimization-note-1/svm_all.jpg">
 </figure>
 一个无正则化的多类SVM的损失函数的图示。左边和中间只有一个样本数据，右边是CIFAR-10中的100个数据。**左**：a值变化在某个维度方向上对应的损失值变化。**中和右**：两个维度方向上的损失值切片图，蓝色部分是低损失值区域，红色部分是高损失值区域。注意损失函数的分段线性结构。多个样本的损失值是总体的平均值，所以右边的碗状结构是很多的分段线性结构的平均（比如中间这个就是其中之一）。
 
