@@ -10,6 +10,9 @@ categories: CS231n
 tag: 笔记
 ---
 
+* content
+{:toc}
+
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="540" height="86" src="//music.163.com/outchain/player?type=2&id=149297&auto=1&height=66"></iframe>
 
 # 最优化分类笔记 （上）
