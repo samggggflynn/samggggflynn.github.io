@@ -3,7 +3,7 @@ layout: post
 #标题配置
 title: Optimization Note（最优化笔记）（下）
 #时间配置
-date:   2019-03-04 16:17:00 +0800
+date:   2019-03-17 23:17:00 +0800
 #大类配置
 categories: CS231n
 #小类配置
