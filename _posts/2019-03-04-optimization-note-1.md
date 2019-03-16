@@ -38,8 +38,6 @@ tag: 笔记
 
 -------------------------------------------------
 
-![](/styles/images/2019-03-04-optimization-note-1/svm1d.png)![](/styles/images/2019-03-04-optimization-note-1/svm_one.jpg)![](/styles/images/2019-03-04-optimization-note-1/svm_all.jpg)
-
 <figure class="third">
     <img src="/styles/images/2019-03-04-optimization-note-1/svm1d.png" width="200"/>
     <img src="/styles/images/2019-03-04-optimization-note-1/svm_one.jpg" width="200"/>
