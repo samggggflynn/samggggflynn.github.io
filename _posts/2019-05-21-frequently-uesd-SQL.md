@@ -74,7 +74,8 @@ create [unique] index idxname on tabname(col….)
 ```
 
 9、创建视图
-```create view viewname as select statement
+```
+create view viewname as select statement
 
 	--删除视图：drop view viewname
 ```
