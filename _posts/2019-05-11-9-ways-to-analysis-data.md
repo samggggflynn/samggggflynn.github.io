@@ -149,13 +149,13 @@ CART(Classification and Regression Tree)算法产生于20世纪80年代中期，
 
 贝叶斯定理是朴素贝叶斯分类法（Naive Bayesian Classifier）的基础，如果给定数据集里有M个分类类别，通过朴素贝叶斯分类法，可以预测给定观察值是否属于具有最高后验概率的特定类别，也就是说，朴素贝叶斯分类方法预测X属于类别CiCi时，表示当且仅当  
 
-P(Ci|X)＞P(Cj|X)1≤j≤m，j≠iP(Ci|X)＞P(Cj|X)1≤j≤m，j≠i
+![](http://latex.codecogs.com/svg.latex?\ P(Ci|X)＞P(Cj|X)1≤j≤m，j≠iP(Ci|X)＞P(Cj|X)1≤j≤m，j≠i)
 
-此时如果最大化P(Ci|X)P(Ci|X)，其P(Ci|X)P(Ci|X)最大的类CiCi被称为最大后验假设，根据贝叶斯定理可知，由于P(X)P(X)对于所有的类别是均等的，因此只需要P(X|Ci)P(Ci)P(X|Ci)P(Ci)取最大即可。
+此时如果最大化![](http://latex.codecogs.com/svg.latex?\ P(Ci|X)P(Ci|X))，其![](http://latex.codecogs.com/svg.latex?\ P(Ci|X)P(Ci|X))最大的类CiCi被称为最大后验假设，根据贝叶斯定理可知，由于P(X)P(X)对于所有的类别是均等的，因此只需要![](http://latex.codecogs.com/svg.latex?\ P(X|Ci)P(Ci)P(X|Ci)P(Ci))取最大即可。
 
-为了预测一个未知样本XX的类别，可对每个类别CiCi估算相应的P(X|Ci)P(Ci)P(X|Ci)P(Ci)。样本XX归属于类别CiCi，当且仅当  
+为了预测一个未知样本XX的类别，可对每个类别CiCi估算相应的![](http://latex.codecogs.com/svg.latex?\ P(X|Ci)P(Ci)P(X|Ci)P(Ci))。样本XX归属于类别CiCi，当且仅当  
 
-P(Ci|X)＞P(Cj|X)1≤j≤m，j≠iP(Ci|X)＞P(Cj|X)1≤j≤m，j≠i
+![](http://latex.codecogs.com/svg.latex?\ P(Ci|X)＞P(Cj|X)1≤j≤m，j≠iP(Ci|X)＞P(Cj|X)1≤j≤m，j≠i)
 
 贝叶斯分类方法在数据化运营实践中主要用于分类问题的归类等应用场景。
 
@@ -167,9 +167,9 @@ P(Ci|X)＞P(Cj|X)1≤j≤m，j≠iP(Ci|X)＞P(Cj|X)1≤j≤m，j≠i
 
 支持向量机的基本概念如下：
 
-设给定的训练样本集为(x1,y1),(x2,y2),…,(xn,yn)(x1,y1),(x2,y2),…,(xn,yn)，其中xi∈Rn,y∈\[−1,1\]xi∈Rn,y∈\[−1,1\]。
+设给定的训练样本集为(x1,y1),(x2,y2),…,(xn,yn)(x1,y1),(x2,y2),…,(xn,yn)，其中![](http://latex.codecogs.com/svg.latex?\ xi∈Rn,y∈\[−1,1\]xi∈Rn,y∈\[−1,1\])。
 
-再假设该训练集可被一个超平面线性划分，设该超平面记为(w,x)+b\=0(w,x)+b\=0。
+再假设该训练集可被一个超平面线性划分，设该超平面记为![](http://latex.codecogs.com/svg.latex?\ (w,x)+b\=0(w,x)+b\=0)。
 
 支持向量机的基本思想可用下图的两维情况举例说明。（线性可分情况下的最优分类线）  
 [![](https://ws3.sinaimg.cn/large/006tKfTcly1fq82c0jkiaj30m50g3dgg.jpg)](https://ws3.sinaimg.cn/large/006tKfTcly1fq82c0jkiaj30m50g3dgg.jpg)
