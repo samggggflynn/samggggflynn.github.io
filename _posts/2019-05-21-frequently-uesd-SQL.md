@@ -72,11 +72,13 @@ create [unique] index idxname on tabname(col….)
 	--删除索引：drop index idxname
 	--注：索引是不可更改的，想更改必须删除重新建。
 ```
+
 9、创建视图
 ```create view viewname as select statement
 
 	--删除视图：drop view viewname
 ```
+
 10、几个简单的基本SQL语句
 
 ```
@@ -103,3 +105,39 @@ create [unique] index idxname on tabname(col….)
 --最小
 	select min(field1) as minvalue from table1
 ```
+
+11、几个高级查询运算词
+
+```
+A: UNION 运算符
+
+UNION 运算符通过组合其他两个结果表(例如 TABLE1 和 TABLE2)并消去表中任何重复行而派生出一个结果表。当 ALL 随 UNION 一起使用时(即 UNION ALL)，不消除重复行。两种情况下，派生表的每一行不是来自 TABLE1 就是来自 TABLE2。
+
+B: EXCEPT 运算符
+
+EXCEPT 运算符通过包括所有在 TABLE1 中但不在 TABLE2 中的行并消除所有重复行而派生出一个结果表。当 ALL 随 EXCEPT 一起使用时 (EXCEPT ALL)，不消除重复行。
+
+C：INTERSECT 运算符
+
+INTERSECT 运算符通过只包括 TABLE1 和 TABLE2 中都有的行并消除所有重复行而派生出一个结果表。当 ALL 随 INTERSECT 一起使用时 (INTERSECT ALL)，不消除重复行。
+
+　　注：使用运算词的几个查询结果行必须是一致的。
+
+```
+
+12、 使用外连接
+
+```
+A : left (outer) join:
+--左外连接（左连接）：结果集包括连接表的匹配行，也包括左连接表的所有行。
+	SQL: select a.a a.b a.c,b.d,b.f from a LEFT OUT JOIN b ON a.a = b.c
+
+B: right (outer) join:
+--右外连接（右连接）：结果集既包括 连接表的匹配连接行，也包括右连接表的所有行。
+
+C: full / crose (outer) join :
+
+--全外连接：不仅包括符号连接表的匹配行，还包括两个连接表的所有记录。
+```
+
+
