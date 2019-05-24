@@ -16,7 +16,7 @@ tag: 数据挖掘
 ---
 <iframe src="https://open.spotify.com/embed/track/2Fxmhks0bxGSBdJ92vM42m" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 
-<iframe width="1518" height="594" src="https://www.youtube.com/embed/T-IvNwSgUE4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="960" height="540" src="https://www.youtube.com/watch?v=yd_OSTzK0d0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 数据挖掘的9大成熟技术和商业应用
 ================
