@@ -25,6 +25,8 @@ tag: cv笔记
 
 中值滤波是图像处理中的一个常用步骤，**它对于斑点噪声和椒盐噪声来说尤其有用**。保存边缘的特性使它在不希望出现边缘模糊的场合也很有用。
 
+在去除椒盐噪声方面均值滤波会模糊图像，并且去除效果较差。相比之下，中值滤波能够较好地去除椒盐噪声。
+代码实现：
 ```python
 import numpy as np
 import cv2
@@ -55,6 +57,7 @@ cv2.imshow('origial',img)
 saltImage=saltpepper(img,0.1)
 cv2.imshow('saltImage',saltImage)
 cv2.imwrite('saltImage.png',saltImage)
+
 #使用自带中值滤波函数
 #medianBlur = cv2.medianBlur(img, 3)
 #cv2.imshow('img_median', medianBlur)
