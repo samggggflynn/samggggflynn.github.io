@@ -1,7 +1,7 @@
 ---
 layout: post
 #标题配置
-title: 图像加椒盐噪声与去噪算法对比OpenCV-Python
+title: OpenCV-Python图像加椒盐噪声与去噪算法对比
 date:   2019-06-27 10:35:00 +0800
 #大类配置
 categories: python
