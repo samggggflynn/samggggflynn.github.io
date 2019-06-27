@@ -1,7 +1,7 @@
 ---
 layout: post
 #标题配置
-title: OpenCV-Python 详解Hough变换检测直线
+title: OpenCV-Python详解Hough变换检测直线
 date:   2019-06-27 15:09:00 +0800
 #大类配置
 categories: python
