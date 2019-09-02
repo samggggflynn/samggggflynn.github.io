@@ -29,3 +29,5 @@ tag: opencv笔记
 基于OpenCV-Python的按颜色范围去红色印章蓝色印章、通道分离二值化去印章、去水印[deWaterprint2](https://github.com/samggggflynn/delWaterprint)
 
 基于`Flask` web框架的图像处理接口（接口为ESRGAN超分辨率还原、SRN图像解模糊）[Flask_Web_API](https://github.com/samggggflynn/Web_Api_of_Deblurring_And_Super-resolution)
+
+还写了一篇算是Flask开发接口的教程：[Flask接口教程-docs.google](https://docs.google.com/document/d/1Uz9bXmIwuDs3OF0N7jgBHIjbh74po8BcMqMpEA2XNgA/edit?usp=sharing)
