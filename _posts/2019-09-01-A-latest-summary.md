@@ -30,4 +30,4 @@ tag: opencv笔记
 
 基于`Flask` web框架的图像处理接口（接口为ESRGAN超分辨率还原、SRN图像解模糊）[Flask_Web_API](https://github.com/samggggflynn/Web_Api_of_Deblurring_And_Super-resolution)
 
-还写了一篇算是Flask开发接口的教程：[Flask接口教程-docs.google](https://docs.google.com/document/d/1Uz9bXmIwuDs3OF0N7jgBHIjbh74po8BcMqMpEA2XNgA/edit?usp=sharing)
+还写了一篇算是Flask开发接口的教程：[Flask接口教程-docs.google](https://docs.google.com/document/d/1Uz9bXmIwuDs3OF0N7jgBHIjbh74po8BcMqMpEA2XNgA/edit?usp=sharing)或直接在本站打开[本站 免翻](http://samgggg.tk/Falsk_web_API_for_image_process/) 
