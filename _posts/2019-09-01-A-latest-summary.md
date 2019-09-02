@@ -21,11 +21,9 @@ tag: opencv笔记
 关于详细说明在每个github页的`README`中有陈述。
 
 基于OpenCV-Python的图像拼接（两张）：[stitching1](https://github.com/samggggflynn/panorama-stitching)
-
 基于OpenCV-Python的图像拼接、全景拼接（多张）：[stitching2](https://github.com/samggggflynn/image-stitching-opencv)
 
 基于OpenCV-Python的简单去红色印章、去水印[deWaterprint1](https://github.com/samggggflynn/De_water_print)
-
 基于OpenCV-Python的按颜色范围去红色印章蓝色印章、通道分离二值化去印章、去水印[deWaterprint2](https://github.com/samggggflynn/delWaterprint)
 
 基于`Flask` web框架的图像处理接口（接口为ESRGAN超分辨率还原、SRN图像解模糊）[Flask_Web_API](https://github.com/samggggflynn/Web_Api_of_Deblurring_And_Super-resolution)
