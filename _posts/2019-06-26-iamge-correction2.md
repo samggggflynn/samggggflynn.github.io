@@ -1,7 +1,7 @@
 ---
 layout: post
 #标题配置
-title: Python+jieba中文分词+wordcloud生成词云
+title: Python-OpenCV图像透视矫正
 date:   2019-06-26 08:31:00 +0800
 #大类配置
 categories: python
@@ -27,7 +27,7 @@ tag: cv笔记
 
 写好的函数是这样：
 
-```Python
+```python
 # 透视矫正
 def perspective_transformation(img):
     # 读取图像，做灰度化、高斯模糊、膨胀、Canny边缘检测

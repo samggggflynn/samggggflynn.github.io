@@ -1,7 +1,7 @@
 ---
 layout: post
 #标题配置
-title: OpenCV-Python的文本透视矫正与水平矫正
+title: OpenCV-Python的文本透视矫正与水平矫正（霍夫变换）
 #时间配
 date:   2019-06-25 14:31:00 +0800
 #大类配置
@@ -24,7 +24,7 @@ tag: cv笔记
 
 写好的函数是这样：
 
-```Python
+```python
 # 透视矫正
 def perspective_transformation(img):
     # 读取图像，做灰度化、高斯模糊、膨胀、Canny边缘检测
@@ -148,14 +148,14 @@ if __name__ == '__main__':
 
 原图：
 
-![](/styles/images/2019-06-25/test.png)
+![](/styles/images/22019-06-25-hough-transform/test.png)
 
 画出霍夫线：
 
-![](/styles/images/2019-06-25/houghlines.jpg)
+![](/styles/images/2019-06-25-hough-transform/houghlines.jpg)
 
 矫正（纠偏）以后：
 
-![](/styles/images/2019-06-25/recified.png)
+![](/styles/images/2019-06-25-hough-transform/recified.png)
 
 
