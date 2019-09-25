@@ -288,9 +288,8 @@ MTCNN对单张图片进行人脸检测时，在同样参数的情况下，CPU和
 
 | ![](/styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image1.png) | ![](/styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image2.png) |
 |------------------------------------------|------------------------------------------|
+|图 3.6 RetinaFace-CPU人脸检测框输出（左边ResNet-50，右边MobileNet0.25）                   |
 
-
-图 3.6 RetinaFace-CPU人脸检测框输出（左边ResNet-50，右边MobileNet0.25）
 
 ###### 测试结论
 
@@ -318,11 +317,9 @@ MTCNN对单张图片进行人脸检测时，在同样参数的情况下，CPU和
 
 **BoardingBox人脸框检测结果：**
 
-|------------------------------------------|------------------------------------------|
 | ![](/styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/92bdf7a4dc1e3074fbab9057e610d5ff.png) | ![](/styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/93317716e94f8e562ba2900d1b7b10ff.jpg) |
 |------------------------------------------|------------------------------------------|
-
-图 3.8 RetinaFace-CPU人脸检测框输出（左边nms=0.2，右边nms=0.9）
+|图 3.8 RetinaFace-CPU人脸检测框输出（左边nms=0.2，右边nms=0.9）|
 
 从上图人脸检测框输出，nms=0.2时没有明显人脸被重复标记，当nms=0.9时可以看到大量单个人脸被重复标记。
 
@@ -350,11 +347,9 @@ MTCNN对单张图片进行人脸检测时，在同样参数的情况下，CPU和
 
 **BoardingBox人脸框检测结果：**
 
-|------------------------------------------|------------------------------------------|
 | ![](/styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/650df8776839a6708de736abf8c47e3e.png) | ![](/styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/0db33eaa5c1cd2b821328d2a6640f0ec.png) |
 |------------------------------------------|------------------------------------------|
-
-图 3.11 RetinaFace-CPU人脸检测框输出（thresh=0.6，thresh=0.9）
+|图 3.11 RetinaFace-CPU人脸检测框输出（thresh=0.6，thresh=0.9）   |
 
 ###### 测试结论
 
