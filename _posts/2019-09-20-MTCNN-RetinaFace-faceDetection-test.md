@@ -286,7 +286,7 @@ MTCNN对单张图片进行人脸检测时，在同样参数的情况下，CPU和
 
 **BoardingBox人脸框检测结果：**
 
-| [./styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image4.png](./styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image4.png) | [./styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image4.png](./styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image4.png) |
+| ![](./styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image1.png) | ![](./styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image2.png) |
 |------------------------------------------|------------------------------------------|
 
 
@@ -317,6 +317,10 @@ MTCNN对单张图片进行人脸检测时，在同样参数的情况下，CPU和
 | 0.9                 | 957                 | 11.11         |
 
 **BoardingBox人脸框检测结果：**
+
+
+| ![](/styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/92bdf7a4dc1e3074fbab9057e610d5ff.png) | ![](/styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/93317716e94f8e562ba2900d1b7b10ff.jpg) |
+|------------------------------------------|------------------------------------------|
 
 ![](/styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/92bdf7a4dc1e3074fbab9057e610d5ff.png)
 
@@ -349,6 +353,9 @@ MTCNN对单张图片进行人脸检测时，在同样参数的情况下，CPU和
 | 0.9                    | 430                 | 11.51         |
 
 **BoardingBox人脸框检测结果：**
+
+| ![](/styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/650df8776839a6708de736abf8c47e3e.png) | ![](/styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/0db33eaa5c1cd2b821328d2a6640f0ec.png) |
+|------------------------------------------|------------------------------------------|
 
 ![](/styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/650df8776839a6708de736abf8c47e3e.png)
 
@@ -662,10 +669,10 @@ Wild）人脸数据库，LFW人脸数据库主要用来研究非受限情况下�
 
 MTCNN在GPU环境下对视频流的测试可以做到实时处理，fps大于20。
 
-| [./styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image8.png](./styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image8.png)   | [./styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image9.png](./styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image9.png)   |
+| ![](/styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image3.png)   | ![](/styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image4.png)   |
 |--------------------------------------------|--------------------------------------------|
 | mtcnn 侧脸检测测试                         | mtcnn 人脸倾斜检测测试                     |
-| [./styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image10.png](./styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image10.png) | [./styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image11.png](./styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image11.png) |
+| ![](/styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image5.png) | ![](/styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image6.png) |
 | mtcnn 人脸遮挡检测测试                     | mtcnn 小尺度人脸检测测试                   |
 | 图 5.1 mtcnn视频流测试                     |                                            |
 
@@ -697,16 +704,16 @@ MTCNN能够在GPU下做到实时人脸检测，但是在人脸倾斜，人脸有
 
 加载轻量级模型‘MobileNet0.25’测试结果：
 
-| [./styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image12.png](./styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image12.png) | [./styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image13.png](./styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image13.png) |
+| ![](/styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image7.png) | ![](/styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image8.png) |
 |--------------------------------------------|--------------------------------------------|
 | 侧脸检测测试                               | 人脸倾斜检测测试                           |
-| [./styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image14.png](./styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image14.png) | [./styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image15.png](./styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image15.png) |
+| ![](/styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image9.png) | ![](/styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image10.png) |
 | 人脸遮挡检测测试                           | 小尺度人脸检测测试（有漏检）               |
 | 图 5.2 RetinaFace+MobileNet0.25视频流测试  |                                            |
 
 针对RetinaFace+MobileNet0.25的小尺度漏检情况，通过调节网络阈值thresh参数可以减轻漏检：
 
-| [./styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image15.png](./styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image15.png)        | [./styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image16.png](./styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image16.png) |
+| ![](/styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image11.png)        | ![](/styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image12.png) |
 |---------------------------------------------------|--------------------------------------------|
 | 小尺度人脸检测测试（有漏检）                      | 小尺度人脸检测测试（修改阈值，无漏检）     |
 | 图 5.3 RetinaFace+MobileNet0.25小尺度修改阈值测试 |                                            |
@@ -715,16 +722,16 @@ MTCNN能够在GPU下做到实时人脸检测，但是在人脸倾斜，人脸有
 
 加载标准模型‘ResNet-50’测试结果：
 
-| [./styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image17.png](./styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image17.png) | [./styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image18.png](./styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image18.png) |
+| ![](/styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image13.png) | ![](/styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image14.png) |
 |--------------------------------------------|--------------------------------------------|
 | 侧脸检测测试                               | 人脸倾斜检测测试                           |
-| [./styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image19.png](./styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image19.png) | [./styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image20.png](./styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image20.png) |
+| ![](/styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image15.png) | ![](/styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image16.png) |
 | 人脸遮挡检测测试                           | 小尺度人脸检测测试                         |
 | 图 5.4 RetinaFace+ResNet-50视频流测试      |                                            |
 
 另外对于倾斜为180度的倒置图片，使用‘MobileNet0.25’的模型并不能检测到：
 
-| [./styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image21.png](./styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image21.png) | [./styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image22.png](./styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image22.png) |
+| ![](/styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image17.png) | ![](/styles/images/2019-09-20-MTCNN-RetinaFace-faceDetection-test/image18.png) |
 |--------------------------------------------|--------------------------------------------|
 | 倾斜检测（倒置，MobileNet0.25漏检）        | 倾斜检测（倒置，ResNet-50无漏检）          |
 | 图 5.5 不同模型下倾斜（倒置）测试          |                                            |
