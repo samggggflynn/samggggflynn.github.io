@@ -12,9 +12,10 @@ tag: 数据挖掘
 
 * content
 {:toc}
-
 ---
-<iframe src="https://open.spotify.com/embed/track/2Fxmhks0bxGSBdJ92vM42m" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+<div class="h_iframe">
+    <iframe src="https://open.spotify.com/embed/track/2Fxmhks0bxGSBdJ92vM42m"  height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+</div>
 
 <iframe width="800" height="450" src="https://www.youtube.com/embed/v_ehRX-acIc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
