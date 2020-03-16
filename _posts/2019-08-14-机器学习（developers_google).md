@@ -80,7 +80,7 @@ $$
 以下是取自同一住房数据集的 3 个无标签样本，其中不包含 **`medianHouseValue`**：
 
 |housingMedianAge（特征）|	totalRooms（特征）|	totalBedrooms（特征）|
-|---|---|---|---|
+|---|---|---|
 |42 |1686|	361|
 |34	|1226|	180|
 |33	|1077|	271|
@@ -170,7 +170,7 @@ $$
 - 蓝线表示预测。
 
 <div class="h_iframe">
-    <iframe  src="C:\Users\40101\AppData\Roaming\Typora\typora-user-images\image-20200316103433995.png" height=100% width= "auto"> </iframe>
+    <iframe  src="C:\Users\40101\AppData\Roaming\Typora\typora-user-images\image-20200316103433995.png" > </iframe>
 </div>
 
 
