@@ -69,15 +69,15 @@ if __name__ == '__main__':
     cv2.destroyAllWindows()
 ```
 
-![ticker贴图](/styles/images/image-20200401163222764.png)
+![ticker贴图](/styles/images/typora-images/image-20200401163222764.png)
 
-![底图](/styles/images/image-20200401163239540.png)
+![底图](/styles/images/typora-images/image-20200401163239540.png)
 
 结果：
 
-![image-20200401163400307](/styles/images/image-20200401163400307.png)
+![image-20200401163400307](/styles/images/typora-images/image-20200401163400307.png)
 
 缩放sticker贴图、以及测试边界超出：
 
-![边界超出测试正常](/styles/images/image-20200401163608427.png)
+![边界超出测试正常](/styles/images/typora-images/image-20200401163608427.png)
 
