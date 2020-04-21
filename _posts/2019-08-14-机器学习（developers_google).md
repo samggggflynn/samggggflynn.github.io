@@ -134,10 +134,10 @@ $$
 ### 线性回归
 
 人们早就知晓，相比凉爽的天气，蟋蟀在较为炎热的天气里鸣叫更为频繁。数十年来，专业和业余昆虫学者已将每分钟的鸣叫声和温度方面的数据编入目录。Ruth 阿姨将她喜爱的蟋蟀数据库作为生日礼物送给您，并邀请您自己利用该数据库训练一个模型，从而预测鸣叫声与温度的关系。
-![图 1. 每分钟的鸣叫声与温度（摄氏度）的关系](C:\Users\40101\AppData\Roaming\Typora\typora-user-images\image-20200316101645762.png)
+![图 1. 每分钟的鸣叫声与温度（摄氏度）的关系](/styles/images/typora-images/image-20200316101645762.png)
 图 1. 每分钟的鸣叫声与温度（摄氏度）的关系
 毫无疑问，此曲线图表明温度随着鸣叫声次数的增加而上升。鸣叫声与温度之间的关系是线性关系吗？是的，您可以绘制一条直线来近似地表示这种关系，如下所示：
-![图 2. 线性关系](C:\Users\40101\AppData\Roaming\Typora\typora-user-images\image-20200316101838434.png)
+![图 2. 线性关系](/styles/images/typora-images/image-20200316101838434.png)
 图 2. 线性关系
 事实上，虽然该直线并未精确无误地经过每个点，但针对我们拥有的数据，清楚地显示了鸣叫声与温度之间的关系。只需运用一点代数知识，您就可以将这种关系写下来，如下所示：
 
@@ -177,9 +177,9 @@ $$
 - 蓝线表示预测。
 
 <div class="h_iframe">
-    <iframe  src="C:\Users\40101\AppData\Roaming\Typora\typora-user-images\image-20200316103433995.png" > </iframe>
+    <iframe  src="/styles/images/typora-images/image-20200316103433995.png" > </iframe>
 </div>
 
 
-<iframe src="C:\Users\40101\AppData\Roaming\Typora\typora-user-images\image-20200316103433995.png" > </iframe>
+<iframe src="/styles/images/typora-images/image-20200316103433995.png" > </iframe>
 
